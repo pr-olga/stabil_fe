@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "name": "birne",
+    "created": "2020-01-01",
+    "games": [1, 2, 3, 4]
+  },
+  {
+    "id": 2,
+    "name": "schockolade",
+    "created": "2020-01-01",
+    "games": [1, 2, 3, 4]
+  }
+]

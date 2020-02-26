@@ -1,0 +1,110 @@
+[
+  {
+    "id": 1,
+    "created": "2020-01-01 00:00:00",
+    "finished": "2020-01-01 04:00:00",
+    "player-1": {
+      "missing": "2",
+      "white": "4",
+      "black": "0",
+      "wrong": "2",
+      "double-fault": "0",
+      "line-4": "0",
+      "line-5": "0",
+      "line-6": "0",
+      "victory": "2"
+    },
+    "player-2": {
+      "missing": "4",
+      "white": "5",
+      "black": "0",
+      "wrong": "21",
+      "double-fault": "0",
+      "line-4": "0",
+      "line-5": "0",
+      "line-6": "0",
+      "victory": "2"
+    }
+  },
+  {
+    "id": 2,
+    "created": "2020-01-01 00:00:00",
+    "finished": "2020-01-01 04:00:00",
+    "player-1": {
+      "missing": "2",
+      "white": "4",
+      "black": "0",
+      "wrong": "2",
+      "double-fault": "0",
+      "line-4": "0",
+      "line-5": "0",
+      "line-6": "0",
+      "victory": "2"
+    },
+    "player-2": {
+      "missing": "4",
+      "white": "5",
+      "black": "0",
+      "wrong": "21",
+      "double-fault": "0",
+      "line-4": "0",
+      "line-5": "0",
+      "line-6": "0",
+      "victory": "2"
+    }
+  },
+  {
+    "id": 3,
+    "created": "2020-01-01 00:00:00",
+    "finished": "2020-01-01 04:00:00",
+    "player-1": {
+      "missing": "2",
+      "white": "4",
+      "black": "0",
+      "wrong": "2",
+      "double-fault": "0",
+      "line-4": "0",
+      "line-5": "0",
+      "line-6": "0",
+      "victory": "2"
+    },
+    "player-2": {
+      "missing": "4",
+      "white": "5",
+      "black": "0",
+      "wrong": "21",
+      "double-fault": "0",
+      "line-4": "0",
+      "line-5": "0",
+      "line-6": "0",
+      "victory": "2"
+    }
+  },
+  {
+    "id": 4,
+    "created": "2020-01-01 00:00:00",
+    "finished": "2020-01-01 04:00:00",
+    "player-1": {
+      "missing": "2",
+      "white": "4",
+      "black": "0",
+      "wrong": "2",
+      "double-fault": "0",
+      "line-4": "0",
+      "line-5": "0",
+      "line-6": "0",
+      "victory": "2"
+    },
+    "player-2": {
+      "missing": "4",
+      "white": "5",
+      "black": "0",
+      "wrong": "21",
+      "double-fault": "0",
+      "line-4": "0",
+      "line-5": "0",
+      "line-6": "0",
+      "victory": "2"
+    }
+  }
+]
