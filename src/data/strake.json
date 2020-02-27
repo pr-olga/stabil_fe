@@ -4,7 +4,7 @@
     "created": "2020-01-04 18:00:00",
     "finished": "2020-01-04 20:00:00",
     "games": [1, 2, 3, 4],
-    "player-1": {
+    "player1": {
       "missing": "2",
       "white": "4",
       "black": "0",
@@ -15,7 +15,7 @@
       "line-6": "0",
       "victory": "2"
     },
-    "player-2": {
+    "player2": {
       "missing": "4",
       "white": "5",
       "black": "0",
@@ -32,7 +32,7 @@
     "created": "2020-04-18 18:00:00",
     "finished": "2020-04-18 20:00:00",
     "games": [1, 2, 3, 4],
-    "player-1": {
+    "player1": {
       "missing": "2",
       "white": "4",
       "black": "0",
@@ -43,7 +43,7 @@
       "line-6": "0",
       "victory": "3"
     },
-    "player-2": {
+    "player2": {
       "missing": "4",
       "white": "5",
       "black": "0",

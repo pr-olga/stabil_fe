@@ -1,8 +1,8 @@
 [
   {
     "id": 1,
-    "player-1": 1,
-    "player-2": 2,
+    "player1": 1,
+    "player2": 2,
     "strake": 1
   }
 ]
