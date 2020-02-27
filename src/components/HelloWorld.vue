@@ -20,6 +20,6 @@ h1{
   font-family: 'Monoton';
   color: #000;
   //color: #fff;
-/*       text-shadow: 0 0 10px #000, 0 0 20px #000, 0 0 30px #000, 0 0 40px #FF1177, 0 0 70px #FF1177, 0 0 80px #FF1177, 0 0 100px #FF1177, 0 0 150px #FF1177; */
+    /*    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #FF1177, 0 0 70px #FF1177, 0 0 80px #FF1177, 0 0 100px #FF1177, 0 0 150px #FF1177; */
 }
 </style>
