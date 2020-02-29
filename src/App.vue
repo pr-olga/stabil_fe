@@ -12,6 +12,8 @@
 </div>
 </template>
 <script>
+import axios from 'axious'
+
 export default {
   data () {
     return {
@@ -22,6 +24,9 @@ export default {
     showMenu () {
       this.activeMenu = !this.activeMenu
     }
+  },
+  created: {
+
   }
 }
 </script>

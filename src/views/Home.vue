@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <HelloWorld msg="Welcome    to StaBill"/>
+    <HelloWorld msg="StaBill"/>
     <img alt="stabill banner" src="../assets/adult_cropped.jpg" class="home-banner img-fluid">
     <div class="container ">
           <div class="row justify-content-md-center">
