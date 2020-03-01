@@ -1,18 +1,13 @@
 <template>
   <div id="app">
+    <stabil-header></stabil-header>
     <div>
       <button class="btn-navi"><img src="https://ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/2x/btw_ic_speeddial_white_24dp_2x.png" alt="" @click="showMenu"/></button>
     </div>
-    <transition>
-      <div class="navi" v-if="activeMenu">
-        <a href="/overview">Overview</a>
-      </div>
-    </transition>
-    <router-view/>
 </div>
 </template>
 <script>
-import axios from 'axious'
+import Header from '@/views/Layout/Header'
 
 export default {
   data () {
@@ -25,8 +20,8 @@ export default {
       this.activeMenu = !this.activeMenu
     }
   },
-  created: {
-
+  components: {
+    stabilHeader: Header
   }
 }
 </script>
