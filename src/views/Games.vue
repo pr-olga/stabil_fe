@@ -31,9 +31,9 @@ export default {
       games: ''
     }
   },
-  async created () {
+  created () {
     var me = this
-    await axios.get('http://localhost:8000/api/games',
+    axios.get('http://localhost:8000/api/games',
       { headers: { 'Access-Control-Allow-Origin': '*' } }
     )
       .then(
