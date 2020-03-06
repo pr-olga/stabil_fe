@@ -2,7 +2,7 @@
   <div id="matches">
     <h1>Matches</h1>
     <h2>Create a new one</h2>
-    <form>
+    <form @submit.prevent="createMatch">
       <div class="form-group">
         <label for="exampleInputEmail1">Player 1</label>
         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
@@ -14,13 +14,52 @@
       </div>
       <button type="submit" class="btn btn-primary">Start</button>
     </form>
-    <router-view></router-view>
+
+    <div>
+      <ul>
+        <li v-for="match in matches" :key="match.id">
+          {{match.id}}<br>
+          {{match.isFinished}}<br>
+          {{match.games}}
+          </li>
+      </ul>
+
+    </div>
   </div>
 </template>
 
 <script>
-export default {
+import MatcheService from '@/services/MatcheService'
 
+export default {
+  data () {
+    return {
+      matches: [],
+      finished: 'false'
+    }
+  },
+  methods: {
+    async createMatch (e) {
+      try {
+        await MatcheService.post({ is_finished: 'false' }).then((response) => {
+          this.$router.push('/matches/' + response.data.id + '/current')
+        })
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  },
+  mounted () {
+    try {
+      const a = MatcheService.get()
+      a.then((values) => {
+        this.matches = values.data
+        console.log(values.data)
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }
 }
 </script>
 
