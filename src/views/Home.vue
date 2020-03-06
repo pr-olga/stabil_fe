@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <HelloWorld msg="StaBill"/>
+    <h1>Stabil</h1>
     <img alt="stabill banner" src="../assets/adult_cropped.jpg" class="home-banner img-fluid">
     <div class="container ">
           <div class="row justify-content-md-center">
@@ -16,7 +16,6 @@
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
 import LastGames from '@/components/LastGames.vue'
 import data from '@/data/strake.json'
 
@@ -28,13 +27,18 @@ export default {
     }
   },
   components: {
-    HelloWorld,
     sbLastGames: LastGames
   }
 }
 
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
+h1{
+  margin: 20px 0;
+  font-family: 'Monoton';
+  color: #000;
+}
+
 .home-banner{
   max-height: 450px;
 }
