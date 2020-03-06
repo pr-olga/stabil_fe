@@ -40,7 +40,7 @@ export default {
   a {
     color: #fff;
     background-color: #ff1177;
-    ;
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.3);
   }
 }
 

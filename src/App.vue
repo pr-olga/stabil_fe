@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <stabil-header></stabil-header>
-    <main class="container">
+    <main class="container mb-5">
       <transition
         name="fade"
         mode="out-in"
