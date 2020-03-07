@@ -5,6 +5,7 @@ import Matches from '../views/Matches.vue'
 import MatchesCurrent from '../components/Matches/MatchesCurrent.vue'
 import Games from '../views/Games.vue'
 import GameCurrent from '../components/Game/GameCurrent.vue'
+import Users from '../views/Users.vue'
 
 Vue.use(VueRouter)
 
@@ -33,6 +34,11 @@ const routes = [
     path: '/games',
     name: 'Games',
     component: Games
+  },
+  {
+    path: '/users',
+    name: 'Users',
+    component: Users
   }
 ]
 

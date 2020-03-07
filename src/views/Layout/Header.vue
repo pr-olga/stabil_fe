@@ -8,7 +8,7 @@
         </router-link>
         <router-link to='/games' class="nav-item" tag="li" active-class="active"><a class="nav-link">Games</a>
         </router-link>
-        <router-link to='/players' class="nav-item" tag="li" active-class="active"><a class="nav-link">Players</a>
+        <router-link to='/users' class="nav-item" tag="li" active-class="active"><a class="nav-link">Users</a>
         </router-link>
         <router-link to='/locations' class="nav-item" tag="li" active-class="active"><a class="nav-link">Locations</a>
         </router-link>
