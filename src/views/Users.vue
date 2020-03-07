@@ -34,20 +34,23 @@ export default {
     async createUser () {
       try {
         await UserService.post({ name: this.name })
+        this.getUsers()
+      } catch (error) {
+        console.log(error)
+      }
+    },
+    async getUsers () {
+      try {
+        await UserService.get().then((values) => {
+          this.users = values.data
+        })
       } catch (error) {
         console.log(error)
       }
     }
   },
   mounted () {
-    try {
-      const a = UserService.get()
-      a.then((values) => {
-        this.users = values.data
-      })
-    } catch (error) {
-      console.log(error)
-    }
+    return this.getUsers()
   }
 }
 </script>
