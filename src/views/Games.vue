@@ -7,6 +7,7 @@
           <ul class="list-group">
             <li class="list-group-item" v-for="(index, game) in games" :key="game.id">
              <p class="list__title">#Game: {{index.id}}</p>
+              Match id: {{index.matche.id}}<br>
               Match finished: {{index.matche.isFinished}}<br>
               Players:
               <ul>

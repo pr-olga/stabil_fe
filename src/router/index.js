@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import Matches from '../views/Matches.vue'
 import MatchesCurrent from '../components/MatchesCurrent.vue'
 import Games from '../views/Games.vue'
+import GameCurrent from '../components/Game/GameCurrent.vue'
 
 Vue.use(VueRouter)
 
@@ -22,6 +23,11 @@ const routes = [
     path: '/matches/:id/current',
     name: 'matches-current',
     component: MatchesCurrent
+  },
+  {
+    path: '/matches/:id/games/:id/current',
+    name: 'matches-current',
+    component: GameCurrent
   },
   {
     path: '/games',
