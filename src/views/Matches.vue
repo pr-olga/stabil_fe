@@ -5,7 +5,7 @@
     <form @submit.prevent="createMatch">
       <div class="form-group">
         <label for="player-1">Player 1</label>
-        <select type="text" class="form-control" id="player-1" aria-describedby="emailHelp" @change="excludeFirstPlayer($event)">
+        <select type="text" class="form-control" id="player-1" aria-describedby="emailHelp" @change="excludeFirstPlayer($event)" v-model="firstUser">
           <option value="" disabled>Name of Player 1</option>
           <option v-for="user in users" :key="user.id" :value="user.id" v-show="userDisabled != user.id">
             {{ user.name }}
@@ -14,7 +14,7 @@
       </div>
       <div class="form-group">
         <label for="player-2">Player 2</label>
-        <select type="text" class="form-control" id="player-2" aria-describedby="emailHelp" @change="excludeFirstPlayer($event)">
+        <select type="text" class="form-control" id="player-2" aria-describedby="emailHelp" @change="excludeFirstPlayer($event)" v-model="secondUser">
           <option value="" disabled>Name of Player 1</option>
           <option v-for="user in users" :key="user.id" :value="user.id" v-show="userDisabled != user.id">
             {{ user.name }}
@@ -44,15 +44,16 @@ export default {
   data () {
     return {
       matches: [],
-      finished: 'false',
       users: [],
-      userDisabled: ''
+      userDisabled: '',
+      firstUser: '',
+      secondUser: ''
     }
   },
   methods: {
     async createMatch (e) {
       try {
-        await MatcheService.post({ is_finished: 'false' }).then((response) => {
+        await MatcheService.post({ userFirst: this.firstUser, userSecond: this.secondUser }).then((response) => {
           this.$router.push('/matches/' + response.data.id + '/current')
         })
       } catch (error) {

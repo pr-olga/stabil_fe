@@ -6,5 +6,8 @@ export default {
   },
   get () {
     return Api().get('users')
+  },
+  getUser (id) {
+    return Api().get('users/' + id)
   }
 }

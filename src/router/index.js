@@ -6,6 +6,7 @@ import MatchesCurrent from '../components/Matches/MatchesCurrent.vue'
 import Games from '../views/Games.vue'
 import GameCurrent from '../components/Game/GameCurrent.vue'
 import Users from '../views/Users.vue'
+import UserProfile from '../components/User/UserProfile.vue'
 
 Vue.use(VueRouter)
 
@@ -39,6 +40,11 @@ const routes = [
     path: '/users',
     name: 'Users',
     component: Users
+  },
+  {
+    path: '/users/:id/profile',
+    name: 'UserProfile',
+    component: UserProfile
   }
 ]
 

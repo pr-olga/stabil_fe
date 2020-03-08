@@ -13,7 +13,7 @@
     <div class="mt-5">
       <ul>
         <li v-for="user in users" :key="user.id">
-          {{user.id}} - {{ user.name }}
+          <a :href="'users/' + user.id + '/profile'">{{user.id}} - {{ user.name }}</a>
         </li>
       </ul>
     </div>
