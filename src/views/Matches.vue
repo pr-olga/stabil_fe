@@ -4,18 +4,22 @@
     <h2>Create a new one</h2>
     <form @submit.prevent="createMatch">
       <div class="form-group">
-        <label for="exampleInputEmail1">Player 1</label>
-        <select type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <label for="player-1">Player 1</label>
+        <select type="text" class="form-control" id="player-1" aria-describedby="emailHelp" @change="excludeFirstPlayer($event)">
           <option value="" disabled>Name of Player 1</option>
-          <option v-for="user in users" :key="user.id" :value="user.id">
+          <option v-for="user in users" :key="user.id" :value="user.id" v-show="userDisabled != user.id">
             {{ user.name }}
           </option>
         </select>
       </div>
       <div class="form-group">
-        <label for="exampleInputPassword1">Player 2</label>
-        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Name of Player 2" aria-describedby="emailHelp">
-      </div>
+        <label for="player-2">Player 2</label>
+        <select type="text" class="form-control" id="player-2" aria-describedby="emailHelp" @change="excludeFirstPlayer($event)">
+          <option value="" disabled>Name of Player 1</option>
+          <option v-for="user in users" :key="user.id" :value="user.id" v-show="userDisabled != user.id">
+            {{ user.name }}
+          </option>
+        </select>      </div>
       <button type="submit" class="btn btn-primary">Start</button>
     </form>
 
@@ -41,7 +45,8 @@ export default {
     return {
       matches: [],
       finished: 'false',
-      users: []
+      users: [],
+      userDisabled: ''
     }
   },
   methods: {
@@ -53,9 +58,12 @@ export default {
       } catch (error) {
         console.log(error)
       }
+    },
+    excludeFirstPlayer (event) {
+      this.userDisabled = event.target.value
     }
   },
-  mounted () {
+  created () {
     try {
       const a = MatcheService.get()
       const b = UserService.get()
