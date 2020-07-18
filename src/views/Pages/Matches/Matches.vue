@@ -23,16 +23,24 @@
       <button type="submit" class="btn btn-primary">Start</button>
     </form>
 
-    <div>
-      <ul>
-        <li v-for="match in matches" :key="match.id">
-          {{match.id}}<br>
-          {{match.isFinished}}<br>
-          {{match.games}}
-          </li>
-      </ul>
-
-    </div>
+    <div class="container">
+      <div class="row justify-content-md-center">
+        <div class="col-md-8">
+          <ul class="list-group">
+            <li class="list-group-item" v-for="match in matches" :key="match.id">
+             <p class="list__title">#Match: {{match.id}}</p>
+              Match id: {{match.id}}<br>
+              Started: {{match.created}}<br>
+              Player 1: {{match.userFirstName}}<br>
+              Player 2: {{match.userSecondName}}<br>
+              Finished: {{match.matchFinished}} <br>
+              Games: {{match.games.ids.length}} <br>
+              Winner: winner <br>
+            </li>
+          </ul>
+        </div>
+      </div>
+  </div>
   </div>
 </template>
 
@@ -44,6 +52,7 @@ export default {
   data () {
     return {
       matches: [],
+      test: [],
       users: [],
       userDisabled: '',
       firstUser: '',
@@ -70,7 +79,7 @@ export default {
       const b = UserService.get()
 
       a.then((values) => {
-        this.matches = values.data
+        this.matches = values.data.sort((a, b) => b.id - a.id)
       })
 
       b.then((values) => {

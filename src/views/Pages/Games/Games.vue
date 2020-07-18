@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+import GameService from '@/services/GameService'
 
 export default {
   data () {
@@ -30,17 +30,15 @@ export default {
     }
   },
   created () {
-    var me = this
-    axios.get('http://localhost:8000/api/games',
-      { headers: { 'Access-Control-Allow-Origin': '*' } }
-    )
-      .then(
-        function (res) {
-          me.games = res.data
-          console.log(me.games)
-        }
-      )
-      .catch(err => console.log(err))
+    try {
+      const games = GameService.get()
+
+      games.then((values) => {
+        this.games = values.data.sort((a, b) => b.id - a.id)
+      })
+    } catch (error) {
+      console.log(error)
+    }
   }
 }
 
