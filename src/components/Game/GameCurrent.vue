@@ -2,14 +2,7 @@
   <div id="game-current">
     <h1>Current Game</h1>
     <div class="col-md-12">
-      <div class="row mt-5 align-center">
-        <div class="col-md-6">
-          <h3>player_1</h3>
-        </div>
-        <div class="col-md-6">
-          <h3>player_2</h3>
-        </div>
-      </div>
+
       <div class="row mt-4 align-center">
         <div class="col-md-6">
           <button class="btn faults f-missing">Missing</button>
@@ -72,8 +65,39 @@
 </template>
 
 <script>
-export default {
+import PlayerService from '@/services/PlayerService'
 
+export default {
+  data () {
+    return {
+      player1ID: '',
+      player2ID: '',
+      currentPlayerID: '',
+      missing: '',
+      white: '',
+      black: '',
+      wrong: '',
+      doubleFault: '',
+      line4: '',
+      line5: '',
+      line6: '',
+      victory: ''
+    }
+  },
+  methods: {
+    async startNewGame ($id) {
+      try {
+        await PlayerService.patch(this.$route.params.id, {
+          matche: this.matchId
+
+        }).then((response) => {
+
+        })
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  }
 }
 </script>
 

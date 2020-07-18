@@ -5,16 +5,13 @@
       <div class="row justify-content-md-center">
         <div class="col-md-8">
           <ul class="list-group">
-            <li class="list-group-item" v-for="(index, game) in games" :key="game.id">
-             <p class="list__title">#Game: {{index.id}}</p>
-              Match id: {{index.matche.id}}<br>
-              Match finished: {{index.matche.isFinished}}<br>
-              Players:
-              <ul>
-                <li v-for="data in index.players" :key="data.id">{{data.name}}<br>
-                  {{data.victory}}
-                </li>
-              </ul>
+            <li class="list-group-item" v-for="game in games" :key="game.id">
+             <p class="list__title">#Game: {{game.id}}</p>
+              Match id: {{game.matcheId}}<br>
+              Player 1: {{game.userFirstName}}<br>
+              Player 2: {{game.userSecondName}}<br>
+              Finished: {{game.matcheFinished}} <br>
+              Winner: winner <br>
             </li>
           </ul>
         </div>
@@ -40,6 +37,7 @@ export default {
       .then(
         function (res) {
           me.games = res.data
+          console.log(me.games)
         }
       )
       .catch(err => console.log(err))
