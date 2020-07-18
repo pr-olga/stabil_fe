@@ -3,10 +3,10 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Matches from '../views/Pages/Matches/Matches.vue'
 import MatchesCurrent from '../views/Pages/Matches/MatchesCurrent.vue'
-import Games from '../views/Games.vue'
-import GameCurrent from '../components/Game/GameCurrent.vue'
-import Users from '../views/Users.vue'
-import UserProfile from '../components/User/UserProfile.vue'
+import Games from '../views/Pages/Games/Games.vue'
+import GameCurrent from '../views/Pages/Games/GameCurrent.vue'
+import Users from '../views/Pages/Users/Users.vue'
+import UserProfile from '../views/Pages/Users/UserProfile.vue'
 
 Vue.use(VueRouter)
 
