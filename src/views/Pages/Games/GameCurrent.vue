@@ -10,52 +10,40 @@
         </game-button>
       </div>
       <div class="row mt-4 align-center">
-        <div class="col-md-6">
-          <button class="btn faults f-white">White</button>
-        </div>
-        <div class="col-md-6">
-          <button class="btn faults f-white">White</button>
-        </div>
+        <game-button :playerID="player1ID" :fault="white">
+        </game-button>
+        <game-button :playerID="player2ID" :fault="white">
+        </game-button>
       </div>
       <div class="row mt-4 align-center">
-        <div class="col-md-6">
-          <button class="btn faults f-black">Black</button>
-        </div>
-        <div class="col-md-6">
-          <button class="btn faults f-black">Black</button>
-        </div>
+        <game-button :playerID="player1ID" :fault="black">
+        </game-button>
+        <game-button :playerID="player2ID" :fault="black">
+        </game-button>
       </div>
       <div class="row mt-4 align-center">
-        <div class="col-md-6">
-          <button class="btn faults f-wrong">Wrong</button>
-        </div>
-        <div class="col-md-6">
-          <button class="btn faults f-wrong">Wrong</button>
-        </div>
+        <game-button :playerID="player1ID" :fault="wrong">
+        </game-button>
+        <game-button :playerID="player2ID" :fault="wrong">
+        </game-button>
       </div>
       <div class="row mt-4 align-center">
-        <div class="col-md-6">
-          <button class="btn faults f-double">Double</button>
-        </div>
-        <div class="col-md-6">
-          <button class="btn faults f-double">Double</button>
-        </div>
+        <game-button :playerID="player1ID" :fault="doubleFault">
+        </game-button>
+        <game-button :playerID="player2ID" :fault="doubleFault">
+        </game-button>
       </div>
       <div class="row mt-4 align-center">
-        <div class="col-md-6">
-          <button class="btn faults f-line">Line</button>
-        </div>
-        <div class="col-md-6">
-          <button class="btn faults f-line">Line</button>
-        </div>
+        <game-button :playerID="player1ID" :fault="line4">
+        </game-button>
+        <game-button :playerID="player2ID" :fault="line4">
+        </game-button>
       </div>
       <div class="row mt-4 align-center">
-        <div class="col-md-6">
-          <button class="btn faults f-wrong">Victory</button>
-        </div>
-        <div class="col-md-6">
-          <button class="btn faults f-wrong">Victory</button>
-        </div>
+        <game-button :playerID="player1ID" :fault="victory">
+        </game-button>
+        <game-button :playerID="player2ID" :fault="victory">
+        </game-button>
       </div>
 
     </div>
@@ -77,14 +65,14 @@ export default {
       player2ID: 0, // null because of live circle
       currentPlayerID: '',
       missing: 'Missing',
-      white: '',
-      black: '',
-      wrong: '',
-      doubleFault: '',
-      line4: '',
-      line5: '',
-      line6: '',
-      victory: ''
+      white: 'White',
+      black: 'Black',
+      wrong: 'Wrong',
+      doubleFault: 'DoubleFault',
+      line4: 'line',
+      line5: 'Line 5',
+      line6: 'Line 6',
+      victory: 'Victory'
     }
   },
   created () {
@@ -135,11 +123,15 @@ export default {
   background-color: #e91e63!important;
 }
 
-.f-double {
+.f-doublefault {
   background-color: #ff5722!important;
 }
 
 .f-line {
   background-color: #259b24!important;
+}
+
+.f-victory {
+  background-color: #e91e63!important;
 }
 </style>
