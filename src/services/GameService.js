@@ -6,5 +6,8 @@ export default {
   },
   get () {
     return Api().get('games')
+  },
+  getGame (id) {
+    return Api().get('games/' + id)
   }
 }

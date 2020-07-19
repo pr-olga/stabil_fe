@@ -4,12 +4,10 @@
     <div class="col-md-12">
 
       <div class="row mt-4 align-center">
-        <div class="col-md-6">
-          <button class="btn faults f-missing">Missing</button>
-        </div>
-        <div class="col-md-6">
-          <button class="btn faults f-missing">Missing</button>
-        </div>
+        <game-button :playerID="player1ID" :fault="missing">
+        </game-button>
+        <game-button :playerID="player2ID" :fault="missing">
+        </game-button>
       </div>
       <div class="row mt-4 align-center">
         <div class="col-md-6">
@@ -65,15 +63,20 @@
 </template>
 
 <script>
-import PlayerService from '@/services/PlayerService'
+import GameService from '@/services/GameService'
+import GameButtons from '@/components/Game/GameButtons'
 
 export default {
+  components: {
+    'game-button': GameButtons
+  },
   data () {
     return {
-      player1ID: '',
-      player2ID: '',
+      gameId: '',
+      player1ID: 0, // null because of live circle
+      player2ID: 0, // null because of live circle
       currentPlayerID: '',
-      missing: '',
+      missing: 'Missing',
       white: '',
       black: '',
       wrong: '',
@@ -84,18 +87,17 @@ export default {
       victory: ''
     }
   },
-  methods: {
-    async startNewGame ($id) {
-      try {
-        await PlayerService.patch(this.$route.params.id, {
-          matche: this.matchId
+  created () {
+    try {
+      GameService.getGame(this.$route.params.id).then((values) => {
+        const data = values.data
 
-        }).then((response) => {
-
-        })
-      } catch (error) {
-        console.log(error)
-      }
+        this.gameId = data.id
+        this.player1ID = data.player1.id
+        this.player2ID = data.player2.id
+      })
+    } catch (error) {
+      console.log(error)
     }
   }
 }
