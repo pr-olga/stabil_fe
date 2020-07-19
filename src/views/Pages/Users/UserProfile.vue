@@ -12,7 +12,7 @@
         <div class="col-md-10">
               <ul>
                 <list-transition :duration="duration[0]">
-                  <li class="list-group-item">Amount of Games: {{this.games.length}} <button type="button" class="btn btn-info float-right">detailed info</button></li>
+                  <li class="list-group-item">Amount of Games: {{this.games.length}} <button type="button" class="btn btn-outline-info float-right">detailed info</button></li>
                  </list-transition>
                  <list-transition :duration="duration[1]">
                   <li class="list-group-item">Victories: </li>
@@ -77,6 +77,9 @@ export default {
   &__img {
     height: 150px;
     width: 150px;
+    padding-top: 5px;
+    padding-right: 5px;
+    border: 1.5px solid #ff284a;
   }
 }
 </style>

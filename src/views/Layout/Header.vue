@@ -39,7 +39,8 @@ export default {
 .active {
   a {
     color: #fff;
-    background-color: #ff1177;
+    //background-color: #ff1177;
+    background-color: #ff284a;
     box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.3);
   }
 }
@@ -62,7 +63,7 @@ export default {
   border-radius: 50%;
   height: 50px;
   width: 50px;
-  background-color: #ff1177;
+  background-color: #ff284a;
   -webkit-transition: 0.2s;
   transition: 0.2s;
   text-align: center;

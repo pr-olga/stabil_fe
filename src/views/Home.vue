@@ -1,6 +1,8 @@
 <template>
-  <div class="home">
-    <h1>Stabil</h1>
+  <div class="home text-center">
+    <div class="neon-wrapper">
+      <h1 class="home__title">STABIL</h1>
+    </div>
     <img alt="stabill banner" src="../assets/adult_cropped.jpg" class="home-banner img-fluid">
     <div class="container ">
           <div class="row justify-content-md-center">
@@ -33,10 +35,23 @@ export default {
 
 </script>
 <style lang="scss" scoped>
-h1{
-  margin: 20px 0;
-  font-family: 'Monoton';
-  color: #000;
+@font-face {
+  font-family: neon;
+  src: url(../assets/fonts/hellodenverdisplayregular_v1.6.ttf);
+}
+
+.home__title{
+  //margin: 20px 0;
+  display: inline-block;
+  padding: 1rem;
+  color: #ffd8d8;
+  background-color: #282828;
+  font-family: neon;
+  font-size: 7rem;
+  text-shadow:
+  .1vw 0vw   0vw #f25757, .2vw 0vw   0vw #f25757, .2vw 0vw   0vw #f25757,
+  .1vw 0vw   1vw #e50b0b, .2vw 0vw   1vw #e50b0b, .4vw 0vw   5vw #e50b0b;
+
 }
 
 .home-banner{
