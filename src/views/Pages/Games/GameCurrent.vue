@@ -13,7 +13,6 @@
       </div>
     </div>
     <div class="col-md-12">
-
       <div class="row mt-4 align-center">
         <game-button :playerID="player1ID" :fault="missing">
         </game-button>

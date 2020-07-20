@@ -21,36 +21,31 @@
 </template>
 
 <script>
-import UserService from '@/services/UserService'
+// import UserService from '@/services/UserService'
 
 export default {
   data () {
     return {
-      users: '',
       name: ''
     }
   },
-  methods: {
-    async createUser () {
-      try {
-        await UserService.post({ name: this.name })
-        this.getUsers()
-      } catch (error) {
-        console.log(error)
-      }
-    },
-    async getUsers () {
-      try {
-        await UserService.get().then((values) => {
-          this.users = values.data
-        })
-      } catch (error) {
-        console.log(error)
-      }
-    }
+  // methods: {
+  //   async createUser () {
+  //     try {
+  //       await UserService.post({ name: this.name })
+  //       this.getUsers()
+  //     } catch (error) {
+  //       console.log(error)
+  //     }
+  //   }
+  // },
+  created () {
+    this.$store.dispatch('getUsers')
   },
-  mounted () {
-    return this.getUsers()
+  computed: {
+    users () {
+      return this.$store.state.users
+    }
   }
 }
 </script>

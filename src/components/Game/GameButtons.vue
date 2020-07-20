@@ -1,6 +1,6 @@
 <template>
   <div class="col-md-6">
-    <button class="btn faults" :class="dynamicClass" @click="patchPlayers()">{{this.currentVal}}{{this.fault}}</button>
+    <button class="btn faults" :class="dynamicClass" @click="patchPlayers()">{{this.currentVal}} {{this.fault}}</button>
   </div>
 </template>
 
