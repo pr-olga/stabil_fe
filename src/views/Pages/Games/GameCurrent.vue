@@ -1,6 +1,17 @@
 <template>
   <div id="game-current">
-    <h1>Current Game</h1>
+    <h1>Current Game: </h1>
+    <div class="row">
+      <div class="col-md-5 text-center">
+        <h2>{{this.player1Name}}</h2>
+      </div>
+      <div  class="col-md-2 text-center">
+        <b>vs</b>
+      </div>
+       <div class="col-md-5 text-center">
+        <h2>{{this.player2Name}}</h2>
+      </div>
+    </div>
     <div class="col-md-12">
 
       <div class="row mt-4 align-center">
@@ -63,6 +74,8 @@ export default {
       gameId: '',
       player1ID: 0, // null because of live circle
       player2ID: 0, // null because of live circle
+      player1Name: '',
+      player2Name: '',
       currentPlayerID: '',
       missing: 'Missing',
       white: 'White',
@@ -83,6 +96,8 @@ export default {
         this.gameId = data.id
         this.player1ID = data.player1.id
         this.player2ID = data.player2.id
+        this.player1Name = data.player1.userName
+        this.player2Name = data.player2.userName
       })
     } catch (error) {
       console.log(error)
