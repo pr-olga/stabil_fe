@@ -11,22 +11,26 @@
       <button type="submit" class="btn btn-primary">Create an Account</button>
     </form>
     <div class="mt-5">
-      <h3>Best Users</h3>
+      <h3 class="headline-h3">Best Users</h3>
       <div class="row">
         <div v-for="user in bestUsers" :key="user.id" class="col-md-4">
-          <a :href="'users/' + user.id + '/profile'">
-            <user-card>{{user.id}} - {{ user.name }}</user-card>
-          </a>
+            <user-card :user="user" >
+              <template v-slot:name>{{ user.name }}</template>
+              <template v-slot:id>{{ user.id }}</template>
+            </user-card>
         </div>
         </div>
     </div>
     <div class="mt-5">
-      <h3>All Users</h3>
-      <ul>
-        <li v-for="user in users" :key="user.id">
-          <a :href="'users/' + user.id + '/profile'">{{user.id}} - {{ user.name }}</a>
-        </li>
-      </ul>
+      <h3  class="headline-h3">All Users</h3>
+        <div class="row">
+          <div v-for="user in users" :key="user.id" class="col-md-4">
+            <user-card :user="user" >
+              <template v-slot:name>{{ user.name }}</template>
+              <template v-slot:id>{{ user.id }}</template>
+            </user-card>
+        </div>
+        </div>
     </div>
 </div>
 </template>
@@ -63,6 +67,12 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+.headline-h3 {
+  margin-bottom: 40px;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+}
 
 </style>
