@@ -11,6 +11,9 @@ export default new Vuex.Store({
   mutations: {
     SET_USERS (state, users) {
       state.users = users
+    },
+    ADD_USER (state, data) {
+      state.users.push(data)
     }
   },
   actions: {
@@ -20,6 +23,16 @@ export default new Vuex.Store({
           const users = values.data
           commit('SET_USERS', users)
         })
+      } catch (error) {
+        console.log(error)
+      }
+    },
+    createUser ({ commit }, payload) {
+      try {
+        UserService.post({ name: payload })
+          .then((resp) => {
+            commit('ADD_USER', resp.data)
+          })
       } catch (error) {
         console.log(error)
       }

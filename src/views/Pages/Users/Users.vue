@@ -30,8 +30,6 @@
 </template>
 
 <script>
-import UserService from '@/services/UserService'
-
 export default {
   data () {
     return {
@@ -39,13 +37,8 @@ export default {
     }
   },
   methods: {
-    async createUser () {
-      try {
-        this.$store.commit('createUser', this.name)
-        await UserService.post({ name: this.name })
-      } catch (error) {
-        console.log(error)
-      }
+    createUser () {
+      this.$store.dispatch('createUser', this.name)
     }
   },
   mounted () {
