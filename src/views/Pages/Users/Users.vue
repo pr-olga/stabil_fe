@@ -56,7 +56,6 @@ export default {
       return this.$store.state.users
     },
     bestUsers () {
-      console.log(this.$store.getters.bestUsers)
       return this.$store.getters.bestUsers
     }
   }

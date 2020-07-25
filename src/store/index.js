@@ -27,7 +27,18 @@ export default new Vuex.Store({
   },
   getters: {
     bestUsers: state => {
-      return state.users.filter((user) => user.players[0])
+      const numberOfPlayers = state.users.filter((user) => user.players.some(({ victory }) => !!victory))
+      const bestUsers = []
+      numberOfPlayers.forEach(e => {
+        const victories = e.players.filter((x) => x.victory != null).length
+        bestUsers[e.id] = {
+          id: e.id,
+          name: e.name,
+          victories: victories
+        }
+      })
+
+      return bestUsers.filter(bestUser => !!bestUser).sort((a, b) => b.victories - a.victories)
     }
   },
   modules: {
