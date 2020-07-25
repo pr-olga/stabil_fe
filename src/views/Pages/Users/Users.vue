@@ -12,11 +12,13 @@
     </form>
     <div class="mt-5">
       <h3>Best Users</h3>
-      <ul>
-        <li v-for="user in bestUsers" :key="user.id">
-          <a :href="'users/' + user.id + '/profile'">{{user.id}} - {{ user.name }}</a>
-        </li>
-      </ul>
+      <div class="row">
+        <div v-for="user in bestUsers" :key="user.id" class="col-md-4">
+          <a :href="'users/' + user.id + '/profile'">
+            <user-card>{{user.id}} - {{ user.name }}</user-card>
+          </a>
+        </div>
+        </div>
     </div>
     <div class="mt-5">
       <h3>All Users</h3>
@@ -30,7 +32,12 @@
 </template>
 
 <script>
+import UserCard from '@/components/User/UserCard'
+
 export default {
+  components: {
+    'user-card': UserCard
+  },
   data () {
     return {
       name: ''
