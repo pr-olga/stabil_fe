@@ -1,17 +1,18 @@
 <template>
 <div id="users">
-  <h1>Hello Users!</h1>
-  <h2>Create a New User</h2>
-  <form ref="newUser" @submit.prevent="createUser">
-      <div class="form-group">
-        <label for="name">Your Name</label>
-        <input type="text" class="form-control" id="name" aria-describedby="nameHelp"
-          placeholder="Olgita Kirsche" v-model="name">
-      </div>
-      <button type="submit" class="btn btn-primary">Create an Account</button>
-    </form>
+  <h1>Users</h1>
+  <div class="row">
+    <div class="col-md-6">here you can get a basic overview about the players/users. You see their name, id, amount of victories, and the beginngin date. Every card is linked to single profile whre you can find detailed statistics abut a user. Morerover, there is a subgroup formed according to the amount of the victories <b>Best Users</b>.
+    </div>
+  </div>
+    <div class="row">
+    <div class="col-md-6">
+   Getting curious and want to get tracked and analyzed your scores?
+   <p class="mt-3"><button class="btn btn-danger">Create an account!</button></p>
+    </div>
+  </div>
     <div class="mt-5">
-      <h3 class="headline-h3">Best Users</h3>
+      <h2 class="headline-h3">Best Players</h2>
       <div class="row">
         <div v-for="user in bestUsers" :key="user.id" class="col-md-4">
             <user-card :user="user" >
@@ -22,7 +23,7 @@
         </div>
     </div>
     <div class="mt-5">
-      <h3  class="headline-h3">All Users</h3>
+      <h2  class="headline-h3">All Players</h2>
         <div class="row">
           <div v-for="user in users" :key="user.id" class="col-md-4">
             <user-card :user="user" >
