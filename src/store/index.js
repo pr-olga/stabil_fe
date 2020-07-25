@@ -9,16 +9,25 @@ export default new Vuex.Store({
     users: []
   },
   mutations: {
+    SET_USERS (state, users) {
+      state.users = users
+    }
   },
   actions: {
-    async getUsers () {
+    getUsers ({ commit }) {
       try {
-        await UserService.get().then((values) => {
-          this.state.users = values.data
+        UserService.get().then((values) => {
+          const users = values.data
+          commit('SET_USERS', users)
         })
       } catch (error) {
         console.log(error)
       }
+    }
+  },
+  getters: {
+    bestUsers: state => {
+      return state.users.filter((user) => user.players[0])
     }
   },
   modules: {

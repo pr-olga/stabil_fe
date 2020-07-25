@@ -11,6 +11,15 @@
       <button type="submit" class="btn btn-primary">Create an Account</button>
     </form>
     <div class="mt-5">
+      <h3>Best Users</h3>
+      <ul>
+        <li v-for="user in bestUsers" :key="user.id">
+          <a :href="'users/' + user.id + '/profile'">{{user.id}} - {{ user.name }}</a>
+        </li>
+      </ul>
+    </div>
+    <div class="mt-5">
+      <h3>All Users</h3>
       <ul>
         <li v-for="user in users" :key="user.id">
           <a :href="'users/' + user.id + '/profile'">{{user.id}} - {{ user.name }}</a>
@@ -21,7 +30,7 @@
 </template>
 
 <script>
-// import UserService from '@/services/UserService'
+import UserService from '@/services/UserService'
 
 export default {
   data () {
@@ -29,22 +38,26 @@ export default {
       name: ''
     }
   },
-  // methods: {
-  //   async createUser () {
-  //     try {
-  //       await UserService.post({ name: this.name })
-  //       this.getUsers()
-  //     } catch (error) {
-  //       console.log(error)
-  //     }
-  //   }
-  // },
-  created () {
+  methods: {
+    async createUser () {
+      try {
+        this.$store.commit('createUser', this.name)
+        await UserService.post({ name: this.name })
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  },
+  mounted () {
     this.$store.dispatch('getUsers')
   },
   computed: {
     users () {
       return this.$store.state.users
+    },
+    bestUsers () {
+      console.log(this.$store.getters.bestUsers)
+      return this.$store.getters.bestUsers
     }
   }
 }
