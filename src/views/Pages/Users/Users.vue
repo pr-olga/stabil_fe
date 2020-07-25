@@ -2,7 +2,7 @@
 <div id="users">
   <h1>Hello Users!</h1>
   <h2>Create a New User</h2>
-  <form @submit.prevent="createUser">
+  <form ref="newUser" @submit.prevent="createUser">
       <div class="form-group">
         <label for="name">Your Name</label>
         <input type="text" class="form-control" id="name" aria-describedby="nameHelp"
@@ -38,7 +38,8 @@ export default {
   },
   methods: {
     createUser () {
-      this.$store.dispatch('createUser', this.name)
+      this.name ? this.$store.dispatch('createUser', this.name) : this.name = ''
+      this.name = ''
     }
   },
   mounted () {
