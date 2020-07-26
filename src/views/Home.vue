@@ -56,6 +56,7 @@ export default {
 
 .home-banner{
   max-height: 450px;
+  box-shadow: 0 3px 20px rgba(0,0,0,0.3);
 }
 
 </style>

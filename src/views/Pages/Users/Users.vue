@@ -8,7 +8,9 @@
     <div class="row">
     <div class="col-md-6">
    Getting curious and want to get tracked and analyzed your scores?
-   <p class="mt-3"><button class="btn btn-danger">Create an account!</button></p>
+   <p class="mt-3">
+    <user-form :showModal="showModal"></user-form>
+     <button class="btn btn-danger btn-alert-stabil" @click="showModal = true">Create an account!</button></p>
     </div>
   </div>
     <div class="mt-5">
@@ -38,14 +40,17 @@
 
 <script>
 import UserCard from '@/components/User/UserCard'
+import CreateUserForm from '@/components/User/CreateUserForm'
 
 export default {
   components: {
-    'user-card': UserCard
+    'user-card': UserCard,
+    'user-form': CreateUserForm
   },
   data () {
     return {
-      name: ''
+      name: '',
+      showModal: false
     }
   },
   methods: {
@@ -74,6 +79,12 @@ export default {
   text-align: center;
   font-size: 2rem;
   font-weight: 700;
+}
+
+.btn.btn-alert-stabil{
+  background-color: #ff284a;
+  border-color: #ff284a;
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.3);
 }
 
 </style>
