@@ -17,9 +17,9 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    getUsers ({ commit }) {
+    async getUsers ({ commit }) {
       try {
-        UserService.get().then((values) => {
+        await UserService.get().then((values) => {
           const users = values.data
           commit('SET_USERS', users)
         })

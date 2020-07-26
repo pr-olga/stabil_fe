@@ -52,7 +52,7 @@ export default {
       showModal: false
     }
   },
-  mounted () {
+  created () {
     this.$store.dispatch('getUsers')
   },
   computed: {
