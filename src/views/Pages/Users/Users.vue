@@ -9,7 +9,7 @@
     <div class="col-md-6">
    Getting curious and want to get tracked and analyzed your scores?
    <p class="mt-3">
-    <user-form :showModal="showModal"></user-form>
+    <user-form v-if="showModal" @close="showModal = false"></user-form>
      <button class="btn btn-danger btn-alert-stabil" @click="showModal = true">Create an account!</button></p>
     </div>
   </div>
@@ -49,14 +49,7 @@ export default {
   },
   data () {
     return {
-      name: '',
       showModal: false
-    }
-  },
-  methods: {
-    createUser () {
-      this.name ? this.$store.dispatch('createUser', this.name) : this.name = ''
-      this.name = ''
     }
   },
   mounted () {
