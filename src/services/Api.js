@@ -2,10 +2,11 @@ import axios from 'axios'
 
 export default () => {
   return axios.create({
-    baseURL: 'http://localhost:8000/api/' || process.env.baseURL,
+    baseURL: 'https://localhost:8000/api/' || process.env.baseURL,
     headers: {
       'Access-Control-Allow-Origin': '*',
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'api-key': process.env.VUE_APP_API_KEY
     }
   })
 }
