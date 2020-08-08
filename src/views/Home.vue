@@ -34,29 +34,6 @@ export default {
 }
 
 </script>
-<style lang="scss" scoped>
-@font-face {
-  font-family: neon;
-  src: url(../assets/fonts/hellodenverdisplayregular_v1.6.ttf);
-}
-
-.home__title{
-  //margin: 20px 0;
-  display: inline-block;
-  padding: 1rem;
-  color: #ffd8d8;
-  background-color: #282828;
-  font-family: neon;
-  font-size: 7rem;
-  text-shadow:
-  .1vw 0vw   0vw #f25757, .2vw 0vw   0vw #f25757, .2vw 0vw   0vw #f25757,
-  .1vw 0vw   1vw #e50b0b, .2vw 0vw   1vw #e50b0b, .4vw 0vw   5vw #e50b0b;
-
-}
-
-.home-banner{
-  max-height: 450px;
-  box-shadow: 0 3px 20px rgba(0,0,0,0.3);
-}
-
+<style lang="scss">
+h1 { font-family: Muli; font-size: 23px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 23px; } h3 { font-family: Muli; font-size: 17px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 23px; } p { font-family: Muli; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 23px; } blockquote { font-family: Muli; font-size: 17px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 23px; } pre { font-family: Muli; font-size: 11px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 23px; }
 </style>

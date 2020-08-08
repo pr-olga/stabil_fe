@@ -1,9 +1,9 @@
 <template>
-  <div id="header">
-    <div>
+  <div id="header" >
+      <div class="logo">
+        <a href="/" class="active logo-text">stabil <span class="kugel"></span></a>
+      </div>
       <ul class="nav navbar">
-        <router-link to='/' tag="li" class="nav-item" active-class="active" exact><a class="nav-link">Home</a>
-        </router-link>
         <router-link to='/matches' class="nav-item" tag="li" active-class="active"><a class="nav-link">Matches</a>
         </router-link>
         <router-link to='/games' class="nav-item" tag="li" active-class="active"><a class="nav-link">Games</a>
@@ -19,7 +19,6 @@
         </li>
       </ul>
     </div>
-  </div>
 </template>
 
 <script>
@@ -30,6 +29,42 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+// TODO: responsive
+#header {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 12rem 0 14rem;
+}
+
+.logo {
+  padding-top: 2rem;
+
+}
+
+.logo-text {
+   font-family: 'Mulish';
+  font-variant: small-caps;
+  font-size: 36px;
+  color: #212529;
+  font-weight: 300;
+
+  &:hover {
+    color: #ff284a;
+    text-decoration: none;
+    transition: 0.3s;
+  }
+}
+
+.kugel {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+margin-bottom: 5.5px;
+margin-left: -10px;
+  background-color: #ff284a;
+  border-radius: 50%;
+}
+
 .navbar {
   padding: 2rem;
   justify-content: flex-end;
@@ -48,9 +83,10 @@ export default {
   font-size: 18px;
   margin-right: 10px;
   transition: 0.3s;
+  font-family: 'Mulish';
 
   &:hover {
-    color: #ff284a;
+    color: $primary;
   }
 }
 
