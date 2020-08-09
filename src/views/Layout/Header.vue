@@ -31,6 +31,13 @@ export default {
   display: flex;
   justify-content: space-between;
   margin: 0 12rem 0 14rem;
+  border-bottom: 1px solid #f0f0f0;
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
 }
 
 .logo {

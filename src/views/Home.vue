@@ -10,7 +10,17 @@
     </div>
     <div class="col-md-5">
       <div class="border-stabil">
-        <img alt="stabill banner" src="../assets/adult_cropped.jpg" class="home-banner img-fluid">
+        <div class="flip-box">
+          <div class="flip-box-inner">
+            <div class="flip-box-front">
+              <img alt="stabill banner" src="../assets/adult_cropped.jpg" class="home-banner img-fluid flip-image">
+              <img src="../assets/icon-hand.svg" alt="" class="img-hand animation-onload">
+            </div>
+            <div class="flip-box-back">
+              <p>JOKE.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -44,11 +54,11 @@
     <div class="col-md-7"></div>
     <div class="col-md-5">
       <article class="content-home">
-<h2 class="h2-stabil">Stay up to date</h2>
-      <div class="ball-container">
-        <p class="animated-ball" v-scrollAnimation></p>
-      </div>
-</article>
+        <h2 class="h2-stabil">Stay up to date</h2>
+        <div class="ball-container">
+          <p class="animated-ball" v-scrollAnimation></p>
+        </div>
+      </article>
       <p class="header_text">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero numquam consequatur temporibus quo magni necessitatibus harum quasi asperiores distinctio?
       </p>
@@ -79,13 +89,12 @@ export default {
 
 <style lang="scss">
 .header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1;
-    background-color: #fff;
-    border-bottom: 1px solid #f0f0f0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  background-color: #fff;
 
   &_title {
     margin-top: 10%;
@@ -124,29 +133,6 @@ export default {
   height: 335px;
   max-height: 100%;
   border: 3px solid $primary;
-}
-
-@keyframes floating {
-
-  0%,
-  to {
-    transform: translate(0) scale(1);
-  }
-
-  50% {
-    transform: translate(7%, -11%) scale(1.02);
-  }
-}
-
-.animation-onload {
-  animation-name: floating;
-  animation-duration: 7s;
-  animation-timing-function: ease;
-  animation-delay: 0s;
-  animation-iteration-count: infinite;
-  animation-direction: normal;
-  animation-fill-mode: none;
-  animation-play-state: running;
 }
 
 h1 {
@@ -236,6 +222,96 @@ pre {
   animation-delay: 0.4s;
   animation-direction: normal;
   animation-fill-mode: forwards;
+  animation-play-state: running;
+}
+
+/* Animated image*/
+
+.flip-box {
+  background-color: transparent;
+  width: 100%;
+  max-width: 437px;
+  height: 100%;
+  max-height: 308px;
+  perspective: 1000px;
+}
+
+.flip-box-inner {
+  position: relative;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-box:hover .flip-box-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-box-front,
+.flip-box-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.flip-box-back {
+  margin-left: -15px;
+  margin-top: 15px;
+  background-color: $primary;
+  color: white;
+  transform: rotateY(180deg);
+  box-shadow: none;
+
+  p {
+    font-size: 38px;
+    font-weight: 700;
+    width: 100px;
+    height: 30px;
+    margin-top: 30%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* Animation  floating hand*/
+.img-hand {
+  position: absolute;
+  bottom: 0;
+  /* margin-left: -35px; */
+  right: 15px;
+  height: 50px;
+}
+
+@keyframes floating {
+
+  0%,
+  to {
+    transform: translate(0);
+  }
+
+  50% {
+    transform: translate(0%, 15%);
+  }
+}
+
+.animation-onload {
+  animation-name: floating;
+  animation-duration: 3s;
+  animation-timing-function: ease;
+  animation-delay: 0s;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+  animation-fill-mode: none;
   animation-play-state: running;
 }
 </style>
