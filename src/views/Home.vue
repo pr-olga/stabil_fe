@@ -1,5 +1,5 @@
 <template>
-<div class="home" >
+<div class="home">
   <section class="row row-stabil--hero">
     <div class="col-md-7">
       <h1 class="header_title">Welcome to Statistics Tracker for Billiard!</h1>
@@ -24,66 +24,43 @@
       </div>
     </div>
   </section>
-  <section class="row row-stabil">
-    <div class="col-md-7 col-xl-6"></div>
-    <div class="col-md-5 col-xl-6">
-      <h2 class="h2-stabil">Increase your perfomance</h2>
-      <div class="ball-container">
-        <p class="animated-ball" v-scrollAnimation></p>
-      </div>
-      <p class="header_text">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero numquam consequatur temporibus quo magni necessitatibus harum quasi asperiores distinctio?
-      </p>
-      <button class="btn btn-danger btn-alert-stabil btn_section float-right">show journeys</button>
-    </div>
-  </section>
-  <section class="row row-stabil">
-    <div class="col-md-5">
-      <h2 class="h2-stabil">Document and analyze your results</h2>
-      <div class="ball-container">
-        <p class="animated-ball" v-scrollAnimation></p>
-      </div>
-      <p class="header_text">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero numquam consequatur temporibus quo magni necessitatibus harum quasi asperiores distinctio?
-      </p>
-      <button class="btn btn-danger btn-alert-stabil btn_section float-right">show analyses</button>
-    </div>
-    <div class="col-md-7"></div>
-  </section>
-  <section class="row row-stabil">
-    <div class="col-md-7"></div>
-    <div class="col-md-5">
-      <article class="content-home">
-        <h2 class="h2-stabil">Stay up to date</h2>
-        <div class="ball-container">
-          <p class="animated-ball" v-scrollAnimation></p>
-        </div>
-      </article>
-      <p class="header_text">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero numquam consequatur temporibus quo magni necessitatibus harum quasi asperiores distinctio?
-      </p>
-      <button class="btn btn-danger btn-alert-stabil btn_section float-right">show news</button>
 
-    </div>
-  </section>
+  <!-- Part 1 -->
+  <section-stabil>
+    <template v-slot:header>Increase your perfomance</template>
+    <template v-slot:description>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero numquam consequatur temporibus quo magni necessitatibus harum quasi asperiores distinctio?</template>
+    <template v-slot:btn>show journeys</template>
+  </section-stabil>
+
+  <!-- Part 2 -->
+  <section-stabil :textOnLeft="textOnLeft">
+    <template v-slot:header>Document and analyze your results</template>
+    <template v-slot:description>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero numquam consequatur temporibus quo magni necessitatibus harum quasi asperiores distinctio?</template>
+    <template v-slot:btn>show news</template>
+  </section-stabil>
+
+  <!-- Part 3 -->
+  <section-stabil>
+    <template v-slot:header>Stay up to date</template>
+    <template v-slot:description>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero numquam consequatur temporibus quo magni necessitatibus harum quasi asperiores distinctio?</template>
+    <template v-slot:btn>show news</template>
+  </section-stabil>
 </div>
 </template>
 
 <script>
-// @ is an alias to /src
-/* import LastGames from '@/components/LastGames.vue' */
-import data from '@/data/strake.json'
+import Section from '@/components/Home/Section'
 
 export default {
   name: 'Home',
   data () {
     return {
-      strakes: data
+      textOnLeft: true
     }
+  },
+  components: {
+    sectionStabil: Section
   }
-  /*  components: {
-    sbLastGames: LastGames
-  } */
 }
 </script>
 
@@ -115,10 +92,6 @@ export default {
     margin-top: 10px;
     margin-left: 0.5px;
   }
-}
-
-.btn_section {
-  height: 45px;
 }
 
 .home-banner {
@@ -178,51 +151,6 @@ pre {
   font-variant: normal;
   font-weight: 400;
   line-height: 23px;
-}
-
-/* Animated line*/
-.ball-container {
-  height: 15px;
-}
-
-.animated-ball {
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  margin-top: -5px;
-  background-color: $primary;
-}
-
-@keyframes rolling {
-
-  0%,
-  to {
-    border-radius: 50%;
-    width: 15px;
-    transform: translate(0);
-  }
-
-  30% {
-    border-radius: 0%;
-    height: 2px;
-  }
-
-  100% {
-    width: 100%;
-    height: 2px;
-    border-radius: 0%;
-    transform: translate(10%);
-  }
-}
-
-.animation-onroal {
-  animation-name: rolling;
-  animation-duration: 3s;
-  animation-timing-function: ease;
-  animation-delay: 0.4s;
-  animation-direction: normal;
-  animation-fill-mode: forwards;
-  animation-play-state: running;
 }
 
 /* Animated image*/
