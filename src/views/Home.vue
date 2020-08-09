@@ -17,26 +17,32 @@
   <section class="row row-stabil">
     <div class="col-md-7 col-xl-6"></div>
     <div class="col-md-5 col-xl-6">
-        <h2 class="h2-stabil">Increase your perfomance</h2>
-              <p class="header_text">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero numquam consequatur temporibus quo magni necessitatibus harum quasi asperiores distinctio? Soluta aut ad quisquam repudiandae iure vitae ratione nemo nesciunt eos.
+      <h2 class="h2-stabil">Increase your perfomance</h2>
+      <p class="header_text">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero numquam consequatur temporibus quo magni necessitatibus harum quasi asperiores distinctio?
       </p>
-        <button class="btn btn-danger btn-alert-stabil btn_section">show journeys</button>
-      </div>
+      <button class="btn btn-danger btn-alert-stabil btn_section float-right">show journeys</button>
+    </div>
   </section>
   <section class="row row-stabil">
-      <div class="col-md-5">
-        <h2 class="h2-stabil">Document and analyze your results</h2>
-         <button class="btn btn-danger btn-alert-stabil btn_section">show analyses</button>
-      </div>
-      <div class="col-md-7"></div>
+    <div class="col-md-5">
+      <h2 class="h2-stabil">Document and analyze your results</h2>
+      <p class="header_text">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero numquam consequatur temporibus quo magni necessitatibus harum quasi asperiores distinctio?
+      </p>
+      <button class="btn btn-danger btn-alert-stabil btn_section float-right">show analyses</button>
+    </div>
+    <div class="col-md-7"></div>
   </section>
   <section class="row row-stabil">
-                <div class="col-md-7"></div>
-          <div class="col-md-5">
-        <h2 class="h2-stabil">Stay up to date</h2>
-         <button class="btn btn-danger btn-alert-stabil btn_section">show news</button>
-      </div>
+    <div class="col-md-7"></div>
+    <div class="col-md-5">
+      <h2 class="h2-stabil">Stay up to date</h2>
+      <p class="header_text">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero numquam consequatur temporibus quo magni necessitatibus harum quasi asperiores distinctio?
+      </p>
+      <button class="btn btn-danger btn-alert-stabil btn_section float-right">show news</button>
+    </div>
   </section>
 </div>
 </template>
@@ -72,13 +78,18 @@ export default {
   &_text {
     margin-top: 30px;
     font-size: 15px;
+    line-height: 28px;
   }
 
   &_btn {
     height: 45px;
-    margin-top: 20px;
+    margin-top: 10px;
     margin-left: 0.5px;
   }
+}
+
+.btn_section {
+   height: 45px;
 }
 
 .home-banner {
