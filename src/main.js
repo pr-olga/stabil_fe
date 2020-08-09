@@ -4,6 +4,9 @@ import './registerServiceWorker'
 import router from './router'
 import store from './store'
 import 'bootstrap/dist/css/bootstrap.css'
+import ScrollAnimation from './directives/scrollanimationball'
+
+Vue.directive('scrollAnimation', ScrollAnimation)
 
 Vue.config.productionTip = false
 

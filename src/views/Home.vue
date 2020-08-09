@@ -18,6 +18,9 @@
     <div class="col-md-7 col-xl-6"></div>
     <div class="col-md-5 col-xl-6">
       <h2 class="h2-stabil">Increase your perfomance</h2>
+      <div class="ball-container">
+        <p class="animated-ball" v-scrollAnimation></p>
+      </div>
       <p class="header_text">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero numquam consequatur temporibus quo magni necessitatibus harum quasi asperiores distinctio?
       </p>
@@ -27,6 +30,9 @@
   <section class="row row-stabil">
     <div class="col-md-5">
       <h2 class="h2-stabil">Document and analyze your results</h2>
+      <div class="ball-container">
+        <p class="animated-ball" v-scrollAnimation></p>
+      </div>
       <p class="header_text">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero numquam consequatur temporibus quo magni necessitatibus harum quasi asperiores distinctio?
       </p>
@@ -37,11 +43,17 @@
   <section class="row row-stabil">
     <div class="col-md-7"></div>
     <div class="col-md-5">
-      <h2 class="h2-stabil">Stay up to date</h2>
+      <article class="content-home">
+<h2 class="h2-stabil">Stay up to date</h2>
+      <div class="ball-container">
+        <p class="animated-ball" v-scrollAnimation></p>
+      </div>
+</article>
       <p class="header_text">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero numquam consequatur temporibus quo magni necessitatibus harum quasi asperiores distinctio?
       </p>
       <button class="btn btn-danger btn-alert-stabil btn_section float-right">show news</button>
+
     </div>
   </section>
 </div>
@@ -89,7 +101,7 @@ export default {
 }
 
 .btn_section {
-   height: 45px;
+  height: 45px;
 }
 
 .home-banner {
@@ -172,5 +184,50 @@ pre {
   font-variant: normal;
   font-weight: 400;
   line-height: 23px;
+}
+
+/* Animated line*/
+.ball-container {
+  height: 15px;
+}
+
+.animated-ball {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  margin-top: -5px;
+  background-color: $primary;
+}
+
+@keyframes rolling {
+
+  0%,
+  to {
+    border-radius: 50%;
+    width: 15px;
+    transform: translate(0);
+  }
+
+  30% {
+    border-radius: 0%;
+    height: 2px;
+  }
+
+  100% {
+    width: 100%;
+    height: 2px;
+    border-radius: 0%;
+    transform: translate(10%);
+  }
+}
+
+.animation-onroal {
+  animation-name: rolling;
+  animation-duration: 3s;
+  animation-timing-function: ease;
+  animation-delay: 0.4s;
+  animation-direction: normal;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
 }
 </style>
