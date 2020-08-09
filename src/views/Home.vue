@@ -1,5 +1,5 @@
 <template>
-<div class="home">
+<div class="home" >
   <section class="row row-stabil--hero">
     <div class="col-md-7">
       <h1 class="header_title">Welcome to Statistics Tracker for Billiard!</h1>
