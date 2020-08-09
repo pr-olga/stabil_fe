@@ -41,7 +41,7 @@
 
 <script>
 import UserService from '@/services/UserService'
-import ListDurationTransition from '@/components/User/ListDurationTransition'
+import ListDurationTransition from '@/components/Animations/ListDurationTransition'
 
 export default {
   data () {

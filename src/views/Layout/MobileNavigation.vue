@@ -2,21 +2,38 @@
   <div id="navigation-mobile">
     <div class="nav-icon" @click="showNav = false"><img src="../../assets/times-solid.svg" alt="" height="30px"></div>
   <ul class="nav navbar">
-    <router-link to='/matches' class="nav-item" tag="li" active-class="active"><a class="nav-link">Matches</a>
-    </router-link>
-    <router-link to='/games' class="nav-item" tag="li" active-class="active"><a class="nav-link">Games</a>
-    </router-link>
-    <router-link to='/users' class="nav-item" tag="li" active-class="active"><a class="nav-link">Users</a>
-    </router-link>
-    <router-link to='/locations' class="nav-item" tag="li" active-class="active"><a class="nav-link">Locations</a>
-    </router-link>
+    <list-transition :duration="duration[0]">
+      <router-link to='/matches' class="nav-item" tag="li" active-class="active"><a class="nav-link">Matches</a>
+      </router-link>
+    </list-transition>
+    <list-transition :duration="duration[1]">
+      <router-link to='/games' class="nav-item" tag="li" active-class="active"><a class="nav-link">Games</a>
+      </router-link>
+     </list-transition>
+    <list-transition :duration="duration[2]">
+      <router-link to='/users' class="nav-item" tag="li" active-class="active"><a class="nav-link">Users</a>
+      </router-link>
+     </list-transition>
+     <list-transition :duration="duration[3]">
+      <router-link to='/locations' class="nav-item" tag="li" active-class="active"><a class="nav-link">Locations</a>
+      </router-link>
+     </list-transition>
   </ul>
   </div>
 </template>
 
 <script>
+import ListDurationTransition from '@/components/Animations/ListDurationTransition'
 export default {
-  props: ['showNav']
+  props: ['showNav'],
+  data () {
+    return {
+      duration: [600, 900, 1200, 1500] // make the stuff dynamically
+    }
+  },
+  components: {
+    listTransition: ListDurationTransition
+  }
 }
 </script>
 
@@ -26,11 +43,11 @@ export default {
   height: 100%;
   width: 100%;
   top: 0;
-  right: 0;
-  bottom: 0;
   left: 0;
   z-index: 2;
   background-color: #f5f5fa;
+  overflow: hidden;
+  transition: 0.5s;
 
   .navbar {
     flex-direction: column;
