@@ -79,6 +79,14 @@ export default {
 
 <style lang="scss">
 .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    background-color: #fff;
+    border-bottom: 1px solid #f0f0f0;
+
   &_title {
     margin-top: 10%;
     margin-left: -4px;
