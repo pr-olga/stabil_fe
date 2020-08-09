@@ -1,6 +1,6 @@
 <template>
   <div id="navigation-mobile">
-    <div class="nav-icon" @click="showNav = false"><img src="../../assets/times-solid.svg" alt="" height="30px"></div>
+    <div class="nav-icon" @click="closeMenu()"><img src="../../assets/times-solid.svg" alt="" height="30px"></div>
   <ul class="nav navbar">
     <list-transition :duration="duration[0]">
       <router-link to='/matches' class="nav-item" tag="li" active-class="active"><a class="nav-link">Matches</a>
@@ -28,11 +28,17 @@ export default {
   props: ['showNav'],
   data () {
     return {
-      duration: [600, 900, 1200, 1500] // make the stuff dynamically
+      duration: [600, 900, 1200, 1500], // make the stuff dynamically
+      openedMobNav: false
     }
   },
   components: {
     listTransition: ListDurationTransition
+  },
+  methods: {
+    closeMenu () {
+      this.$emit('closeMenu', this.opened)
+    }
   }
 }
 </script>
