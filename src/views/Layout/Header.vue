@@ -47,7 +47,6 @@ export default {
   a {
     color: #ff284a;
     font-weight: 700;
-    letter-spacing: 0.5px;
   }
 }
 
@@ -96,9 +95,7 @@ button>img {
   position: relative;
   width: 30px;
   height: 30px;
-  -transition: 0.5s;
   transition: 0.5s;
-  -transform: rotate(180deg);
   transform: rotate(180deg);
 }
 </style>

@@ -78,6 +78,8 @@ export default {
   background-color: #ff284a;
   border-color: #ff284a;
   box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.3);
+  font-weight: 700;
+  font-variant: small-caps;
 }
 
 </style>

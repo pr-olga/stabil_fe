@@ -36,3 +36,10 @@
        url(~@/assets/fonts/mulish-v1-latin-700.woff) format('woff'), /* Modern Browsers */
        url(~@/assets/fonts/mulish-v1-latin-700.ttf) format('truetype');
 }
+
+/* Typo */
+
+.h2-stabil {
+  font-size: 42px;
+  font-weight: 700;
+}

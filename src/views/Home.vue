@@ -1,25 +1,44 @@
 <template>
-  <div class="home">
-<div class="row">
-<div class="col-md-6"> <h1 class="header_title">Welcome to Statistics Tracker for Billiard!</h1>
-<button class="btn btn-danger btn-alert-stabil">Start to track!</button>
-</div>
-<div class="col-md-6">
-  <div class="border-stabil">
-<img alt="stabill banner" src="../assets/adult_cropped.jpg" class="home-banner img-fluid">
-  </div>
-  </div>
-</div>
-<!--     <div class="container ">
-          <div class="row justify-content-md-center">
-      <div class="col-md-8">
-        <ul class="list-group">
-          <sb-last-games v-for="strake in strakes" :key="strake.id" :strake="strake"></sb-last-games>
-        </ul>
+<div class="home">
+  <section class="row row-stabil--hero">
+    <div class="col-md-7">
+      <h1 class="header_title">Welcome to Statistics Tracker for Billiard!</h1>
+      <p class="header_text">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero numquam consequatur temporibus quo magni necessitatibus harum quasi asperiores distinctio? Soluta aut ad quisquam repudiandae iure vitae ratione nemo nesciunt eos.
+      </p>
+      <button class="btn btn-danger btn-alert-stabil header_btn">start the journey</button>
+    </div>
+    <div class="col-md-5">
+      <div class="border-stabil">
+        <img alt="stabill banner" src="../assets/adult_cropped.jpg" class="home-banner img-fluid">
       </div>
     </div>
-        </div> -->
-  </div>
+  </section>
+  <section class="row row-stabil">
+    <div class="col-md-7 col-xl-6"></div>
+    <div class="col-md-5 col-xl-6">
+        <h2 class="h2-stabil">Increase your perfomance</h2>
+              <p class="header_text">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero numquam consequatur temporibus quo magni necessitatibus harum quasi asperiores distinctio? Soluta aut ad quisquam repudiandae iure vitae ratione nemo nesciunt eos.
+      </p>
+        <button class="btn btn-danger btn-alert-stabil btn_section">show journeys</button>
+      </div>
+  </section>
+  <section class="row row-stabil">
+      <div class="col-md-5">
+        <h2 class="h2-stabil">Document and analyze your results</h2>
+         <button class="btn btn-danger btn-alert-stabil btn_section">show analyses</button>
+      </div>
+      <div class="col-md-7"></div>
+  </section>
+  <section class="row row-stabil">
+                <div class="col-md-7"></div>
+          <div class="col-md-5">
+        <h2 class="h2-stabil">Stay up to date</h2>
+         <button class="btn btn-danger btn-alert-stabil btn_section">show news</button>
+      </div>
+  </section>
+</div>
 </template>
 
 <script>
@@ -38,15 +57,28 @@ export default {
     sbLastGames: LastGames
   } */
 }
-
 </script>
-<style lang="scss">
 
-.header_title {
-  margin-top: 10%;
-  font-family: Mulish;
-  font-weight: 700;
-  font-size: 48px;
+<style lang="scss">
+.header {
+  &_title {
+    margin-top: 10%;
+    margin-left: -4px;
+    font-family: Mulish;
+    font-weight: 700;
+    font-size: 48px;
+  }
+
+  &_text {
+    margin-top: 30px;
+    font-size: 15px;
+  }
+
+  &_btn {
+    height: 45px;
+    margin-top: 20px;
+    margin-left: 0.5px;
+  }
 }
 
 .home-banner {
@@ -58,10 +90,11 @@ export default {
 
 .border-stabil {
   position: relative;
-  height: 375px;
+  height: 335px;
   max-height: 100%;
   border: 3px solid $primary;
 }
+
 @keyframes floating {
 
   0%,
@@ -75,15 +108,58 @@ export default {
 }
 
 .animation-onload {
-    animation-name: floating;
-    animation-duration: 7s;
-    animation-timing-function: ease;
-    animation-delay: 0s;
-    animation-iteration-count: infinite;
-    animation-direction: normal;
-    animation-fill-mode: none;
-    animation-play-state: running;
+  animation-name: floating;
+  animation-duration: 7s;
+  animation-timing-function: ease;
+  animation-delay: 0s;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+  animation-fill-mode: none;
+  animation-play-state: running;
 }
 
-h1 { font-family: Mulish; font-size: 23px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 23px; } h2 { font-family: Mulish; font-size: 17px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 23px; } p { font-family: Mulish; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 23px; } blockquote { font-family: Mulish; font-size: 17px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 23px; } pre { font-family: Mulish; font-size: 11px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 23px; }
+h1 {
+  font-family: Mulish;
+  font-size: 23px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 700;
+  line-height: 23px;
+}
+
+h2 {
+  font-family: Mulish;
+  font-size: 17px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 700;
+  line-height: 23px;
+}
+
+p {
+  font-family: Mulish;
+  font-size: 14px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  line-height: 23px;
+}
+
+blockquote {
+  font-family: Mulish;
+  font-size: 17px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  line-height: 23px;
+}
+
+pre {
+  font-family: Mulish;
+  font-size: 11px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  line-height: 23px;
+}
 </style>
