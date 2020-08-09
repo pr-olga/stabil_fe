@@ -1,7 +1,7 @@
 <template>
   <div id="header" >
       <div class="logo">
-        <a href="/" class="active logo-text">stabil <span class="kugel"></span></a>
+        <a href="/" class="active logo-text">stabiL <span class="kugel"></span></a>
       </div>
       <ul class="nav navbar">
         <router-link to='/matches' class="nav-item" tag="li" active-class="active"><a class="nav-link">Matches</a>
@@ -43,10 +43,10 @@ export default {
 
 .logo-text {
    font-family: 'Mulish';
-  font-variant: small-caps;
+
   font-size: 36px;
   color: #212529;
-  font-weight: 300;
+  font-weight: 400;
 
   &:hover {
     color: #ff284a;
@@ -59,10 +59,11 @@ export default {
   display: inline-block;
   width: 20px;
   height: 20px;
-margin-bottom: 5.5px;
-margin-left: -10px;
+  margin-bottom: -6px;
+  margin-left: -8px;
   background-color: #ff284a;
   border-radius: 50%;
+
 }
 
 .navbar {
