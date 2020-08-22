@@ -2,7 +2,7 @@ import axios from 'axios'
 
 export default () => {
   return axios.create({
-    baseURL: 'https://localhost:8000/api/' || process.env.baseURL,
+    baseURL: 'https://shrouded-coast-76670.herokuapp.com/api/' || process.env.baseURL,
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Content-Type': 'application/json',
