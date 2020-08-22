@@ -12,19 +12,19 @@
            <h1 class="user-profile__name text-center">{{this.user.name}}</h1>
               <ul>
                 <list-transition :duration="duration[0]">
-                  <li class="list-group-item">Amount of Games: {{this.games.length}} <button type="button" class="btn btn-outline-info float-right">details</button></li>
+                  <li class="list-group-item list-group-item-st">Amount of Games: {{this.games.length}} <button type="button" class="btn btn-outline-info float-right">details</button></li>
                  </list-transition>
                  <list-transition :duration="duration[1]">
-                  <li class="list-group-item">Victories: <b>{{this.victory}}</b></li>
+                  <li class="list-group-item list-group-item-st">Victories: <b>{{this.victory}}</b></li>
                  </list-transition>
                 <list-transition :duration="duration[2]">
-                  <li class="list-group-item">Lost: {{this.lost}}</li>
+                  <li class="list-group-item list-group-item-st">Lost: {{this.lost}}</li>
                  </list-transition>
                 <list-transition :duration="duration[3]">
-                  <li class="list-group-item">Whites: {{this.whites}}</li>
+                  <li class="list-group-item list-group-item-st">Whites: {{this.whites}}</li>
                  </list-transition>
                  <list-transition :duration="duration[4]">
-                  <li class="list-group-item">Blacks: {{this.blacks}}</li>
+                  <li class="list-group-item list-group-item-st">Blacks: {{this.blacks}}</li>
                 </list-transition>
                 <list-transition :duration="duration[5]">
                   <div class="mt-4 text-center">

@@ -5,7 +5,7 @@
       <div class="row justify-content-md-center">
         <div class="col-md-8">
           <ul class="list-group">
-            <li class="list-group-item" v-for="game in games" :key="game.id">
+            <li class="list-group-item list-group-item-st" v-for="game in games" :key="game.id">
              <p class="list__title">#Game: {{game.id}}</p>
               Match id: {{game.matcheId}}<br>
               Player 1: {{game.userFirstName}}<br>

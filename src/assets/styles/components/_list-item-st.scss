@@ -1,0 +1,14 @@
+.list-group-item.list-group-item-st {
+    padding-top: 20px;
+    margin-bottom: 20px;
+    + .list-group-item-st {
+        border-top-width: 1px;
+    }
+
+
+    .list__title {
+        font-size: 32px;
+        font-weight: 700;
+    }
+}
+

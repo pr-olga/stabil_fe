@@ -27,7 +27,7 @@
       <div class="row justify-content-md-center">
         <div class="col-md-8">
           <ul class="list-group">
-            <li class="list-group-item" v-for="match in matches" :key="match.id">
+            <li class="list-group-item list-group-item-st" v-for="match in matches" :key="match.id">
              <p class="list__title">#Match: {{match.id}}</p>
               Match id: {{match.id}}<br>
               Started: {{match.created}}<br>

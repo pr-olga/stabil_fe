@@ -6,7 +6,7 @@
       <img src="./assets/bars-solid.svg" alt="" height="30px" ></div>
     </div>
     <stabil-header v-if="!mobileView"></stabil-header>
-    <main class="container mt-5 mb-5">
+    <main class="container main-container-st">
       <transition name="fade" mode="out-in">
         <router-view />
       </transition>
@@ -57,5 +57,10 @@ export default {
 .fade-enter,
 .fade-leave-active {
   opacity: 0
+}
+
+.main-container-st {
+  margin-top: 150px;
+  margin-bottom: 150px;
 }
 </style>
