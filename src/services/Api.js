@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { cacheAdapterEnhancer } from 'axios-extensions'
 
 export default () => {
   return axios.create({
@@ -8,6 +9,7 @@ export default () => {
       'Content-Type': 'application/json',
       timeout: 1000,
       'api-key': process.env.VUE_APP_API_KEY
-    }
+    },
+    adapter: cacheAdapterEnhancer(axios.defaults.adapter)
   })
 }

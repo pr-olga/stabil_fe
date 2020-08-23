@@ -63,20 +63,6 @@ export default {
     bestUsers () {
       return this.$store.getters.bestUsers
     }
-  },
-  methods: {
-    getUser () {
-      return this.$store.dispatch('getUsers')
-    }
-  },
-  async mounted () {
-    // Make network request if the data is empty
-    if (this.users.length === 0) {
-      // set loading screen
-      this.isLoading = true
-      await this.getUser()
-      this.isLoading = false
-    }
   }
 }
 </script>
