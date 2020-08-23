@@ -5,6 +5,7 @@ import Matches from '../views/Pages/Matches/Matches.vue'
 import MatchesCurrent from '../views/Pages/Matches/MatchesCurrent.vue'
 import Games from '../views/Pages/Games/Games.vue'
 import GameCurrent from '../views/Pages/Games/GameCurrent.vue'
+import GameFinished from '../views/Pages/Games/GameFinished.vue'
 import Users from '../views/Pages/Users/Users.vue'
 import UserProfile from '../views/Pages/Users/UserProfile.vue'
 
@@ -27,9 +28,14 @@ const routes = [
     component: MatchesCurrent
   },
   {
-    path: '/matches/:id/games/:id/current',
-    name: 'matches-current',
+    path: '/matches/:id/games/:idGame/current',
+    name: 'game-current',
     component: GameCurrent
+  },
+  {
+    path: '/matches/:id/games/:idGame/finished',
+    name: 'game-finished',
+    component: GameFinished
   },
   {
     path: '/games',

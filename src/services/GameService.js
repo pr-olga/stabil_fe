@@ -9,5 +9,8 @@ export default {
   },
   getGame (id) {
     return Api().get('games/' + id)
+  },
+  patchGame (id, params) {
+    return Api().patch(`games/${id}`, params)
   }
 }

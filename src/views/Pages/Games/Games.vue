@@ -10,7 +10,8 @@
               Match id: {{game.matcheId}}<br>
               Player 1: {{game.userFirstName}}<br>
               Player 2: {{game.userSecondName}}<br>
-              Finished: {{game.matcheFinished}} <br>
+              Game Finished: {{game.gameFinished}} <br>
+              Match Finished: {{game.matcheFinished}} <br>
               Winner: winner <br>
             </li>
           </ul>

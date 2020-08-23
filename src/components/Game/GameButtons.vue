@@ -6,6 +6,7 @@
 
 <script>
 import PlayerService from '@/services/PlayerService'
+import GameService from '@/services/GameService'
 
 export default {
   props: {
@@ -35,8 +36,11 @@ export default {
         }).then(() => {
           PlayerService.patch(this.playerID, {
             [this.faultToLower]: this.currentVal + 1
-          }).then((response) => {
-            console.log(response)
+          }).then(() => {
+            if (this.faultToLower === 'victory') {
+              GameService.patchGame(this.$route.params.idGame, { isFinished: true })
+              this.$router.push(`/matches/${this.$route.params.id}/games/${this.$route.params.idGame}/finished`)
+            }
           })
         })
       } catch (error) {

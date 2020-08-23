@@ -70,7 +70,7 @@ export default {
   },
   data () {
     return {
-      gameId: '',
+      gameId: 0,
       player1ID: 0, // null because of live circle
       player2ID: 0, // null because of live circle
       player1Name: '',
@@ -87,9 +87,9 @@ export default {
       victory: 'Victory'
     }
   },
-  created () {
+  mounted () {
     try {
-      GameService.getGame(this.$route.params.id).then((values) => {
+      GameService.getGame(this.$route.params.idGame).then((values) => {
         const data = values.data
 
         this.gameId = data.id
