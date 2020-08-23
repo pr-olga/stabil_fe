@@ -38,7 +38,7 @@ export default {
         this.games = values.data.sort((a, b) => b.id - a.id)
       })
     } catch (error) {
-      console.log(error)
+
     }
   }
 }

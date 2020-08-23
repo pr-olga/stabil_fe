@@ -66,7 +66,7 @@ export default {
           this.$router.push('/matches/' + response.data.id + '/current')
         })
       } catch (error) {
-        console.log(error)
+
       }
     },
     excludeFirstPlayer (event) {
@@ -86,7 +86,7 @@ export default {
         this.users = values.data
       })
     } catch (error) {
-      console.log(error)
+
     }
   }
 }

@@ -45,11 +45,8 @@ export default {
           })
         })
       } catch (error) {
-        console.log(error)
+
       }
-    },
-    getPlayer () {
-      console.log(this.player1ID)
     }
   }
 }

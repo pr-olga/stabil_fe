@@ -99,7 +99,7 @@ export default {
         this.player2Name = data.player2.userName
       })
     } catch (error) {
-      console.log(error)
+
     }
   }
 }

@@ -26,7 +26,7 @@ export default {
           this.$router.push(`/matches/${this.matchId}/games/${response.data.id}/current`)
         })
       } catch (error) {
-        console.log(error)
+
       }
     },
     async finishMatch () {
@@ -35,7 +35,7 @@ export default {
           this.$router.push('/matches')
         })
       } catch (error) {
-        console.log(error)
+
       }
     }
   },

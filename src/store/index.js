@@ -24,7 +24,7 @@ export default new Vuex.Store({
           commit('SET_USERS', users)
         })
       } catch (error) {
-        console.log(error)
+
       }
     },
     createUser ({ commit }, payload) {
@@ -34,7 +34,7 @@ export default new Vuex.Store({
             commit('ADD_USER', resp.data)
           })
       } catch (error) {
-        console.log(error)
+
       }
     }
   },

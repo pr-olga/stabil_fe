@@ -71,7 +71,7 @@ export default {
           this.blacks = this.games.map(x => x.blacks).reduce((a, b) => a + b)
         })
       } catch (error) {
-        console.log(error)
+
       }
     }
   },
