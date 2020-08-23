@@ -6,6 +6,7 @@ export default () => {
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Content-Type': 'application/json',
+      timeout: 1000,
       'api-key': process.env.VUE_APP_API_KEY
     }
   })

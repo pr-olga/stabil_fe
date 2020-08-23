@@ -12,7 +12,7 @@
            <h1 class="user-profile__name text-center">{{this.user.name}}</h1>
               <ul>
                 <list-transition :duration="duration[0]">
-                  <li class="list-group-item list-group-item-st">Amount of Games: {{this.games.length}} <button type="button" class="btn btn-outline-info float-right">details</button></li>
+                  <li class="list-group-item list-group-item-st">Amount of Games: {{this.games.length}}</li>
                  </list-transition>
                  <list-transition :duration="duration[1]">
                   <li class="list-group-item list-group-item-st">Victories: <b>{{this.victory}}</b></li>

@@ -52,6 +52,9 @@ export default new Vuex.Store({
       })
 
       return bestUsers.filter(bestUser => !!bestUser).sort((a, b) => b.victories - a.victories)
+    },
+    getUsers (state) {
+      return state.users
     }
   },
   modules: {
