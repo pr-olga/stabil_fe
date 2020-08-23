@@ -20,7 +20,7 @@
             {{ user.name }}
           </option>
         </select>      </div>
-      <button type="submit" class="btn btn-primary">Start</button>
+      <button type="submit" class="btn btn-info">Start</button>
     </form>
 
     <div class="container">

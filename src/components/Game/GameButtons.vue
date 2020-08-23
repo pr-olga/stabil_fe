@@ -38,8 +38,9 @@ export default {
             [this.faultToLower]: this.currentVal + 1
           }).then(() => {
             if (this.faultToLower === 'victory') {
-              GameService.patchGame(this.$route.params.idGame, { isFinished: true })
-              this.$router.push(`/matches/${this.$route.params.id}/games/${this.$route.params.idGame}/finished`)
+              GameService.patchGame(this.$route.params.idGame, { isFinished: true }).then((reponse) => {
+                this.$router.push(`/matches/${this.$route.params.id}/games/${this.$route.params.idGame}/finished`)
+              })
             }
           })
         })

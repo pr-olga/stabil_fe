@@ -6,5 +6,8 @@ export default {
   },
   get () {
     return Api().get('matches')
+  },
+  patchMatch (id, params) {
+    return Api().patch(`matches/${id}`, params)
   }
 }
