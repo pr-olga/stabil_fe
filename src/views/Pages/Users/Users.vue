@@ -80,7 +80,10 @@ export default {
   methods: {
     async createUser (e) {
       await this.name ? this.$store.dispatch('createUser', this.name).then(() => {
-        // this.$router.push('/users/' + response.data.id + '/profile')
+        // the promise is faster than store
+        setTimeout(() => {
+          this.$router.push(`/users/${this.$store.getters.getNewUser}/profile`)
+        }, 1000)
       }) : this.name = ''
     }
   }

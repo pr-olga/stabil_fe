@@ -7,7 +7,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     users: [],
-    newUser: []
+    newUser: 0
   },
   mutations: {
     SET_USERS (state, users) {
@@ -15,7 +15,9 @@ export default new Vuex.Store({
     },
     ADD_USER (state, data) {
       state.users.push(data)
-      state.newUser = data
+    },
+    ADD_NEW_USER (state, id) {
+      state.newUser = id
     }
   },
   actions: {
@@ -34,6 +36,7 @@ export default new Vuex.Store({
         UserService.post({ name: payload })
           .then((resp) => {
             commit('ADD_USER', resp.data)
+            commit('ADD_NEW_USER', resp.data.id)
           })
       } catch (error) {
 
@@ -59,6 +62,10 @@ export default new Vuex.Store({
       return state.users
     },
     getNewUser (state) {
+      if (state.newUser === 0) {
+        return state.users.length + 1
+      }
+
       return state.newUser
     }
   },
