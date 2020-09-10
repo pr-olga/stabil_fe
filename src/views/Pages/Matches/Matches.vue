@@ -46,7 +46,7 @@
 
 <script>
 import MatcheService from '@/services/MatcheService'
-import UserService from '@/services/UserService'
+import store from '@/store/index'
 
 export default {
   data () {
@@ -76,18 +76,20 @@ export default {
   created () {
     try {
       const a = MatcheService.get()
-      const b = UserService.get()
 
       a.then((values) => {
         this.matches = values.data.sort((a, b) => b.id - a.id)
       })
-
-      b.then((values) => {
-        this.users = values.data
-      })
     } catch (error) {
 
     }
+  },
+  beforeRouteEnter (to, from, next) {
+    store.dispatch('getUsers').then(() => {
+      next(vm => {
+        vm.users = store.getters.getUsers
+      })
+    })
   }
 }
 </script>
