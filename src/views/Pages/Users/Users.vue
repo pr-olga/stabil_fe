@@ -41,6 +41,7 @@
 <script>
 import UserCard from '@/components/User/UserCard'
 import CreateUserForm from '@/components/User/CreateUserForm'
+import store from '@/store/index'
 
 export default {
   components: {
@@ -50,19 +51,18 @@ export default {
   data () {
     return {
       showModal: false,
-      isLoading: false
+      isLoading: false,
+      users: [],
+      bestUsers: []
     }
   },
-  async created () {
-    this.$store.dispatch('getUsers')
-  },
-  computed: {
-    users () {
-      return this.$store.getters.getUsers
-    },
-    bestUsers () {
-      return this.$store.getters.bestUsers
-    }
+  beforeRouteEnter (to, from, next) {
+    store.dispatch('getUsers').then(() => {
+      next(vm => {
+        vm.users = store.getters.getUsers
+        vm.bestUsers = store.getters.bestUsers
+      })
+    })
   }
 }
 </script>
