@@ -9,7 +9,17 @@
     <div class="col-md-6">
    Getting curious and want to get tracked and analyzed your scores?
    <p class="mt-3">
-    <user-form v-if="showModal" @close="showModal = false"></user-form>
+    <modal-form v-if="showModal" @close="showModal = false">
+      <form ref="newUser" @submit.prevent="createUser">
+        <div class="form-group">
+          <input type="text" class="form-control form-control-stabil" id="name" aria-describedby="nameHelp"
+            v-model="name" placeholder="username">
+          <input type="text" class="form-control form-control-stabil" id="password" aria-describedby="passwordHelp"
+            v-model="password" placeholder="password">
+        </div>
+        <button type="submit" class="btn btn-black-stabil float-right mt-3" @click="$emit('close')">Register</button>
+      </form>
+    </modal-form>
      <button class="btn btn-danger btn-alert-stabil" @click="showModal = true">Create an account!</button></p>
     </div>
   </div>
@@ -40,20 +50,23 @@
 
 <script>
 import UserCard from '@/components/User/UserCard'
-import CreateUserForm from '@/components/User/CreateUserForm'
+import Form from '@/components/Modals/Form'
 import store from '@/store/index'
 
 export default {
   components: {
     'user-card': UserCard,
-    'user-form': CreateUserForm
+    'modal-form': Form
   },
   data () {
     return {
       showModal: false,
       isLoading: false,
       users: [],
-      bestUsers: []
+      bestUsers: [],
+      name: '',
+      password: '',
+      close: true
     }
   },
   beforeRouteEnter (to, from, next) {
@@ -63,6 +76,13 @@ export default {
         vm.bestUsers = store.getters.bestUsers
       })
     })
+  },
+  methods: {
+    async createUser (e) {
+      await this.name ? this.$store.dispatch('createUser', this.name).then(() => {
+        // this.$router.push('/users/' + response.data.id + '/profile')
+      }) : this.name = ''
+    }
   }
 }
 </script>

@@ -1,9 +1,9 @@
 <template>
   <div id="matches">
     <h1>Matches</h1>
-    <h2>Create a new one</h2>
-    <div class="container">
-      <p class="mt-3">
+     <div class="row">
+      <div class="col-md-6">
+        <p class="mt-3">
         <modal-form v-if="showModal" @close="showModal = false">
           <form @submit.prevent="createMatch">
             <div class="form-group">
@@ -30,6 +30,7 @@
         </modal-form>
         <button class="btn btn-danger btn-alert-stabil" @click="showModal = true">Start a match!</button>
       </p>
+    </div>
     </div>
     <div class="container">
       <div class="row justify-content-md-center">

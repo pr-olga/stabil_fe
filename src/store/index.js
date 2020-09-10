@@ -6,7 +6,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    users: []
+    users: [],
+    newUser: []
   },
   mutations: {
     SET_USERS (state, users) {
@@ -14,6 +15,7 @@ export default new Vuex.Store({
     },
     ADD_USER (state, data) {
       state.users.push(data)
+      state.newUser = data
     }
   },
   actions: {
@@ -55,6 +57,9 @@ export default new Vuex.Store({
     },
     getUsers (state) {
       return state.users
+    },
+    getNewUser (state) {
+      return state.newUser
     }
   },
   modules: {
