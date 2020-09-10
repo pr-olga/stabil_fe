@@ -8,6 +8,7 @@ import GameCurrent from '../views/Pages/Games/GameCurrent.vue'
 import GameFinished from '../views/Pages/Games/GameFinished.vue'
 import Users from '../views/Pages/Users/Users.vue'
 import UserProfile from '../views/Pages/Users/UserProfile.vue'
+import initProgress from '../progressbar'
 
 Vue.use(VueRouter)
 
@@ -59,5 +60,7 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 })
+
+initProgress(router)
 
 export default router
