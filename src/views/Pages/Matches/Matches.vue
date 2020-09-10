@@ -2,33 +2,41 @@
   <div id="matches">
     <h1>Matches</h1>
     <h2>Create a new one</h2>
-    <form @submit.prevent="createMatch">
-      <div class="form-group">
-        <label for="player-1">Player 1</label>
-        <select type="text" class="form-control" id="player-1" aria-describedby="emailHelp" @change="excludeFirstPlayer($event)" v-model="firstUser">
-          <option value="" disabled>Name of Player 1</option>
-          <option v-for="user in users" :key="user.id" :value="user.id" v-show="userDisabled != user.id">
-            {{ user.name }}
-          </option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="player-2">Player 2</label>
-        <select type="text" class="form-control" id="player-2" aria-describedby="emailHelp" @change="excludeFirstPlayer($event)" v-model="secondUser">
-          <option value="" disabled>Name of Player 1</option>
-          <option v-for="user in users" :key="user.id" :value="user.id" v-show="userDisabled != user.id">
-            {{ user.name }}
-          </option>
-        </select>      </div>
-      <button type="submit" class="btn btn-info">Start</button>
-    </form>
-
+    <div class="container">
+      <p class="mt-3">
+        <modal-form v-if="showModal" @close="showModal = false">
+          <form @submit.prevent="createMatch">
+            <div class="form-group">
+              <label for="player-1">Player 1</label>
+              <select type="text" class="form-control" id="player-1" aria-describedby="emailHelp"
+                @change="excludeFirstPlayer($event)" v-model="firstUser">
+                <option value="" disabled>Name of Player 1</option>
+                <option v-for="user in users" :key="user.id" :value="user.id" v-show="userDisabled != user.id">
+                  {{ user.name }}
+                </option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="player-2">Player 2</label>
+              <select type="text" class="form-control" id="player-2" aria-describedby="emailHelp"
+                @change="excludeFirstPlayer($event)" v-model="secondUser">
+                <option value="" disabled>Name of Player 1</option>
+                <option v-for="user in users" :key="user.id" :value="user.id" v-show="userDisabled != user.id">
+                  {{ user.name }}
+                </option>
+              </select> </div>
+            <button type="submit" class="btn btn-info">Start</button>
+          </form>
+        </modal-form>
+        <button class="btn btn-danger btn-alert-stabil" @click="showModal = true">Start a match!</button>
+      </p>
+    </div>
     <div class="container">
       <div class="row justify-content-md-center">
         <div class="col-md-8">
           <ul class="list-group">
             <li class="list-group-item list-group-item-st" v-for="match in matches" :key="match.id">
-             <p class="list__title">#Match: {{match.id}}</p>
+              <p class="list__title">#Match: {{match.id}}</p>
               Match id: {{match.id}}<br>
               Started: {{match.created}}<br>
               Player 1: {{match.userFirstName}}<br>
@@ -40,15 +48,19 @@
           </ul>
         </div>
       </div>
-  </div>
+    </div>
   </div>
 </template>
 
 <script>
 import MatcheService from '@/services/MatcheService'
+import Form from '@/components/Modals/Form'
 import store from '@/store/index'
 
 export default {
+  components: {
+    'modal-form': Form
+  },
   data () {
     return {
       matches: [],
@@ -56,13 +68,17 @@ export default {
       users: [],
       userDisabled: '',
       firstUser: '',
-      secondUser: ''
+      secondUser: '',
+      showModal: false
     }
   },
   methods: {
     async createMatch (e) {
       try {
-        await MatcheService.post({ userFirst: this.firstUser, userSecond: this.secondUser }).then((response) => {
+        await MatcheService.post({
+          userFirst: this.firstUser,
+          userSecond: this.secondUser
+        }).then((response) => {
           this.$router.push('/matches/' + response.data.id + '/current')
         })
       } catch (error) {
@@ -92,6 +108,7 @@ export default {
     })
   }
 }
+
 </script>
 
 <style>
