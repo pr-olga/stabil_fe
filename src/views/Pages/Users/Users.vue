@@ -53,7 +53,7 @@ export default {
       isLoading: false
     }
   },
-  created () {
+  async created () {
     this.$store.dispatch('getUsers')
   },
   computed: {

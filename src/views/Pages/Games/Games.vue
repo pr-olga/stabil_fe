@@ -27,19 +27,14 @@ import GameService from '@/services/GameService'
 export default {
   data () {
     return {
-      games: ''
+      games: []
     }
   },
-  created () {
-    try {
-      const games = GameService.get()
-
-      games.then((values) => {
-        this.games = values.data.sort((a, b) => b.id - a.id)
-      })
-    } catch (error) {
-
-    }
+  async beforeRouteEnter (to, from, next) {
+    const res = await GameService.get()
+    next(vm => {
+      vm.games = res.data.sort((a, b) => b.id - a.id)
+    })
   }
 }
 
