@@ -58,26 +58,18 @@ export default {
   components: {
     listTransition: ListDurationTransition
   },
-  methods: {
-    async getUser () {
-      try {
-        await UserService.getUser(this.$route.params.id).then((values) => {
-          this.user = values.data
-          this.games = this.user.players[0]
-        }).then(() => {
-          this.victory = this.games.filter((x) => x.victory != null).length
-          this.lost = this.games.length - this.victory
-          this.whites = this.games.map(x => x.whites).reduce((a, b) => a + b)
-          this.blacks = this.games.map(x => x.blacks).reduce((a, b) => a + b)
-        })
-      } catch (error) {
-
-      }
-    }
-  },
-  created () {
-    return this.getUser()
-  } // Object.keys(this.errors).length
+  beforeRouteEnter (to, from, next) {
+    UserService.getUser(to.params.id).then((val) => {
+      next(vm => {
+        vm.user = val.data
+        vm.games = vm.user.players[0]
+        vm.victory = vm.games.filter((x) => x.victory != null).length
+        vm.lost = vm.games.length - vm.victory
+        vm.whites = vm.games.map(x => x.whites).reduce((a, b) => a + b)
+        vm.blacks = vm.games.map(x => x.blacks).reduce((a, b) => a + b)
+      })
+    })
+  }
 }
 </script>
 
