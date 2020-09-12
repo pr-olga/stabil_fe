@@ -1,13 +1,15 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import UserService from '@/services/UserService'
+import PlayerService from '@/services/PlayerService'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
     users: [],
-    newUser: 0
+    newUser: 0,
+    players: []
   },
   mutations: {
     SET_USERS (state, users) {
@@ -18,6 +20,16 @@ export default new Vuex.Store({
     },
     ADD_NEW_USER (state, id) {
       state.newUser = id
+    },
+    SET_PLAYERS (state, data) {
+      state.players.push(data)
+    },
+    PATCH_PLAYER (state, data) {
+      state.players.map(pl => {
+        if (pl.id === data.id) {
+          pl[data.fault] = data.value
+        }
+      })
     }
   },
   actions: {
@@ -41,6 +53,26 @@ export default new Vuex.Store({
       } catch (error) {
 
       }
+    },
+    setPlayers ({ commit }, payload) {
+      try {
+        PlayerService.getPlayer(payload)
+          .then((resp) => {
+            commit('SET_PLAYERS', resp.data)
+          })
+      } catch (error) {
+
+      }
+    },
+    patchPlayers ({ commit }, payload) {
+      try {
+        PlayerService.patch(payload.id, { [payload.fault]: payload.value })
+          .then(() => {
+            commit('PATCH_PLAYER', payload)
+          })
+      } catch (error) {
+
+      }
     }
   },
   getters: {
@@ -60,6 +92,9 @@ export default new Vuex.Store({
     },
     getUsers (state) {
       return state.users
+    },
+    getPlayers (state) {
+      return state.players
     },
     getNewUser (state) {
       if (state.newUser === 0) {

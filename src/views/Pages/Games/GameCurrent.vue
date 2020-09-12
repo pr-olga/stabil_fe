@@ -1,6 +1,6 @@
 <template>
   <div id="game-current">
-    <h1>Current Game: </h1>
+    <h1>Current Game: [Number]</h1>
     <div class="row">
       <div class="col-md-5 text-center">
         <h2>{{this.player1Name}}</h2>
@@ -14,33 +14,27 @@
     </div>
     <div class="col-md-12">
       <div class="row mt-4 align-center">
-        <game-button :playerID="player1ID" :fault="missing">
+        <game-button :playerID="player1ID" :fault="missing" :value="values[0].missing">
         </game-button>
-        <game-button :playerID="player2ID" :fault="missing">
-        </game-button>
-      </div>
-      <div class="row mt-4 align-center">
-        <game-button :playerID="player1ID" :fault="white">
-        </game-button>
-        <game-button :playerID="player2ID" :fault="white">
+        <game-button :playerID="player2ID" :fault="missing" :value="values[1].missing">
         </game-button>
       </div>
       <div class="row mt-4 align-center">
-        <game-button :playerID="player1ID" :fault="black">
+        <game-button :playerID="player1ID" :fault="white" :value="values[0].white">
         </game-button>
-        <game-button :playerID="player2ID" :fault="black">
-        </game-button>
-      </div>
-      <div class="row mt-4 align-center">
-        <game-button :playerID="player1ID" :fault="wrong">
-        </game-button>
-        <game-button :playerID="player2ID" :fault="wrong">
+        <game-button :playerID="player2ID" :fault="white" :value="values[1].white">
         </game-button>
       </div>
       <div class="row mt-4 align-center">
-        <game-button :playerID="player1ID" :fault="doubleFault">
+        <game-button :playerID="player1ID" :fault="wrong" :value="values[0].wrong">
         </game-button>
-        <game-button :playerID="player2ID" :fault="doubleFault">
+        <game-button :playerID="player2ID" :fault="wrong" :value="values[1].wrong">
+        </game-button>
+      </div>
+      <div class="row mt-4 align-center">
+        <game-button :playerID="player1ID" :fault="doubleFault" :value="values[0].doublefault">
+        </game-button>
+        <game-button :playerID="player2ID" :fault="doubleFault" :value="values[1].doublefault">
         </game-button>
       </div>
       <div class="row mt-4 align-center">
@@ -50,12 +44,17 @@
         </game-button>
       </div>
       <div class="row mt-4 align-center">
+        <game-button :playerID="player1ID" :fault="black">
+        </game-button>
+        <game-button :playerID="player2ID" :fault="black">
+        </game-button>
+      </div>
+      <div class="row mt-4 align-center">
         <game-button :playerID="player1ID" :fault="victory">
         </game-button>
         <game-button :playerID="player2ID" :fault="victory">
         </game-button>
       </div>
-
     </div>
   </div>
 </template>
@@ -87,7 +86,7 @@ export default {
       victory: 'Victory'
     }
   },
-  mounted () {
+  created () {
     try {
       GameService.getGame(this.$route.params.idGame).then((values) => {
         const data = values.data
@@ -97,9 +96,19 @@ export default {
         this.player2ID = data.player2.id
         this.player1Name = data.player1.userName
         this.player2Name = data.player2.userName
+
+        if (this.$store.getters.getPlayers.length === 0) {
+          this.$store.dispatch('setPlayers', data.player1.id)
+          this.$store.dispatch('setPlayers', data.player2.id)
+        }
       })
     } catch (error) {
 
+    }
+  },
+  computed: {
+    values () {
+      return this.$store.getters.getPlayers
     }
   }
 }

@@ -1,11 +1,15 @@
 <template>
   <div class="col-md-6">
-    <button class="btn faults" :class="dynamicClass" @click="patchPlayers()">{{this.currentVal}} {{this.fault}}</button>
+    <button class="btn faults" :class="dynamicClass" @click="patchPlayers()">
+      <template v-if="this.fault !== 'Black' && this.fault !== 'Victory'">
+        {{this.value}}
+      </template>
+      {{this.fault}}
+      </button>
   </div>
 </template>
 
 <script>
-import PlayerService from '@/services/PlayerService'
 import GameService from '@/services/GameService'
 
 export default {
@@ -17,6 +21,10 @@ export default {
     fault: {
       type: String,
       default: 'none'
+    },
+    value: {
+      type: Number,
+      default: 0
     }
   },
   data () {
@@ -30,28 +38,20 @@ export default {
   // TODO: fix: doubleFault and line
   methods: {
     async patchPlayers (fault) {
-      try {
-        await PlayerService.getPlayer(this.playerID).then((values) => {
-          this.currentVal = values.data[this.faultToLower]
-        }).then(() => {
-          PlayerService.patch(this.playerID, {
-            [this.faultToLower]: this.currentVal + 1
-          }).then(() => {
-            if (this.faultToLower === 'victory') {
-              GameService.patchGame(this.$route.params.idGame, { isFinished: true }).then((reponse) => {
-                this.$router.push(`/matches/${this.$route.params.id}/games/${this.$route.params.idGame}/finished`)
-              })
-            }
-          })
-        })
-      } catch (error) {
+      this.$store.dispatch('patchPlayers', { id: this.playerID, fault: this.faultToLower, value: this.value + 1 })
 
+      if (this.faultToLower === 'victory' || this.faultToLower === 'black') {
+        GameService.patchGame(this.$route.params.idGame, { isFinished: true }).then((reponse) => {
+          this.$router.push(`/matches/${this.$route.params.id}/games/${this.$route.params.idGame}/finished`)
+        })
       }
     }
   }
 }
 </script>
 
-<style>
-
+<style lang="scss">
+  .faults:hover {
+    box-shadow: none;
+  }
 </style>
