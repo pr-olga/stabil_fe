@@ -7,17 +7,30 @@
         <modal-form v-if="showModal" @close="showModal = false">
           <form @submit.prevent="createMatch">
             <div class="form-group">
-              <label for="player-1">Player 1</label>
-              <select type="text" class="form-control" id="player-1" aria-describedby="emailHelp"
-                @change="excludeFirstPlayer($event)" v-model="firstUser">
-                <option value="" disabled>Name of Player 1</option>
-                <option v-for="user in users" :key="user.id" :value="user.id" v-show="userDisabled != user.id">
-                  {{ user.name }}
-                </option>
-              </select>
+              <label for="player-1" class="form-label">Player 1</label>
+              <input
+              type="text"
+              class="form-control"
+              id="player-1"
+              @focus="showUsers = true"
+              v-model="firstUser"
+              autocomplete="off">
+                  <div class="users-suggestions" v-show="filteredUsers.length > 0 && showUsers === true">
+                    <ul class="users-suggestions__list">
+                      <li
+                      class="users-suggestions__list__user"
+                      v-for="user in filteredUsers"
+                      :key="user.id"
+                      :value="user.id"
+                      @click.prevent="selectUser(user.name)"
+                      >
+                        {{ user.name }}
+                      </li>
+                    </ul>
+                  </div>
             </div>
             <div class="form-group">
-              <label for="player-2">Player 2</label>
+              <label for="player-2" class="form-label">Player 2</label>
               <select type="text" class="form-control" id="player-2" aria-describedby="emailHelp"
                 @change="excludeFirstPlayer($event)" v-model="secondUser">
                 <option value="" disabled>Name of Player 1</option>
@@ -25,7 +38,7 @@
                   {{ user.name }}
                 </option>
               </select> </div>
-            <button type="submit" class="btn btn-info">Start</button>
+            <button type="submit" class="btn btn-stabil btn-black-stabil float-right mt-2">Start</button>
           </form>
         </modal-form>
         <button class="btn btn-danger btn-alert-stabil" @click="showModal = true">Start a match!</button>
@@ -70,15 +83,16 @@ export default {
       userDisabled: '',
       firstUser: '',
       secondUser: '',
-      showModal: false
+      showModal: false,
+      showUsers: false
     }
   },
   methods: {
     async createMatch (e) {
       try {
         await MatcheService.post({
-          userFirst: this.firstUser,
-          userSecond: this.secondUser
+          userFirst: this.firstUser.id,
+          userSecond: this.secondUser.id
         }).then((response) => {
           this.$router.push('/matches/' + response.data.id + '/current')
         })
@@ -88,6 +102,13 @@ export default {
     },
     excludeFirstPlayer (event) {
       this.userDisabled = event.target.value
+    },
+    hideFilteredUsers () {
+      this.showUsers = false
+    },
+    selectUser (user) {
+      this.firstUser = user
+      this.hideFilteredUsers()
     }
   },
   created () {
@@ -107,11 +128,41 @@ export default {
         vm.users = store.getters.getUsers
       })
     })
+  },
+  computed: {
+    filteredUsers () {
+      return this.users.filter(user => {
+        return user.name.toLowerCase().includes(this.firstUser)
+      })
+    }
   }
 }
 
 </script>
 
-<style>
+<style lang="scss">
+.form-label {
+  margin-left: 2px;
+  font-weight: 600;
+}
 
+.users-suggestions {
+  margin-top: 10px;
+  background-color: #fff;
+
+  &__list {
+    padding-left: 13px;
+    list-style: none;
+
+    &__user {
+      margin-top: 10px;
+
+      &:hover {
+        cursor: pointer;
+        color: $primary;
+      }
+    }
+
+  }
+}
 </style>

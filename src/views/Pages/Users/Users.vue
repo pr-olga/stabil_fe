@@ -14,7 +14,7 @@
         <div class="form-group">
           <input type="text" class="form-control form-control-stabil" id="name" aria-describedby="nameHelp"
             v-model="name" placeholder="username">
-          <input type="text" class="form-control form-control-stabil" id="password" aria-describedby="passwordHelp"
+          <input type="password" class="form-control form-control-stabil" id="password" aria-describedby="passwordHelp"
             v-model="password" placeholder="password">
         </div>
         <button type="submit" class="btn btn-black-stabil float-right mt-3" @click="$emit('close')">Register</button>

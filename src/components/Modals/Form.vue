@@ -33,6 +33,12 @@ export default {
   background-color: rgba(0, 0, 0, .5);
   display: table;
   transition: opacity .3s ease;
+  font-size: 16px;
+
+    .form-control:focus{
+        border-color: $primary;
+        box-shadow: none;
+    }
 }
 
 .modal-wrapper {
@@ -43,7 +49,8 @@ export default {
 .modal-container {
   width: 100%;
   max-width: 400px;
-  height: 250px;
+  min-height: 250px;
+  max-height: 100%;
   margin: 0px auto;
   padding: 20px 30px;
   background-color: #fff;
@@ -68,7 +75,7 @@ export default {
   padding-left: 5px;
   border: none;
   border-radius: 0;
-  border-bottom: solid 1.3px #ff284a;
+  border-bottom: solid 1.3px $primary;
   margin-top: 20px;
 }
 
