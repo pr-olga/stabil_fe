@@ -23,6 +23,7 @@
                       :key="user.id"
                       :value="user.id"
                       @click.prevent="selectUser('firstUser', user.name)"
+                      v-show="excludedUser !== user.name"
                       >
                         {{ user.name }}
                       </li>
@@ -46,6 +47,7 @@
                       :key="user.id"
                       :value="user.id"
                       @click.prevent="selectUser('secondUser', user.name)"
+                      v-show="excludedUser !== user.name"
                       >
                         {{ user.name }}
                       </li>
@@ -97,7 +99,8 @@ export default {
       secondUser: '',
       showModal: false,
       showUsers: false,
-      showSecondUsers: false
+      showSecondUsers: false,
+      excludedUser: ''
     }
   },
   methods: {
@@ -122,6 +125,7 @@ export default {
     },
     selectUser (userModel, user) {
       userModel === 'firstUser' ? this.firstUser = user : this.secondUser = user
+      this.excludedUser = user
       this.hideFilteredUsers()
     }
   },

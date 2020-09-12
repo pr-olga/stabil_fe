@@ -14,8 +14,6 @@
 export default {
   data () {
     return {
-      name: '',
-      password: '',
       close: true
     }
   }
