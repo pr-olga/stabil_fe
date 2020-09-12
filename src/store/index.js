@@ -27,7 +27,7 @@ export default new Vuex.Store({
     PATCH_PLAYER (state, data) {
       state.players.map(pl => {
         if (pl.id === data.id) {
-          pl[data.fault] += 1
+          pl[data.fault] = data.value
         }
       })
     },
@@ -59,8 +59,9 @@ export default new Vuex.Store({
     },
     setPlayers ({ commit }, payload) {
       try {
-        PlayerService.getPlayer(payload)
+        PlayerService.getPlayer(payload[0])
           .then((resp) => {
+            resp.data.name = payload[1]
             commit('SET_PLAYERS', resp.data)
           })
       } catch (error) {

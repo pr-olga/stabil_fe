@@ -3,56 +3,56 @@
     <h1>Current Game: [Number]</h1>
     <div class="row">
       <div class="col-md-5 text-center">
-        <h2>{{this.player1Name}}</h2>
+        <h2>{{values[0] ? values[0].name : 0}}</h2>
       </div>
       <div  class="col-md-2 text-center">
         <b>vs</b>
       </div>
        <div class="col-md-5 text-center">
-        <h2>{{this.player2Name}}</h2>
+        <h2>{{values[1] ? values[1].name : 0}}</h2>
       </div>
     </div>
     <div class="col-md-12">
       <div class="row mt-4 align-center">
-        <game-button :playerID="player1ID" :fault="missing" :value="values[0].missing">
+        <game-button :playerID="values[0] ? values[0].id : 0" :fault="missing" :value="values[0] ? values[0].missing : 0">
         </game-button>
-        <game-button :playerID="player2ID" :fault="missing" :value="values[1].missing">
-        </game-button>
-      </div>
-      <div class="row mt-4 align-center">
-        <game-button :playerID="player1ID" :fault="white" :value="values[0].white">
-        </game-button>
-        <game-button :playerID="player2ID" :fault="white" :value="values[1].white">
+        <game-button :playerID="values[1] ? values[1].id : 0" :fault="missing" :value="values[1] ? values[1].missing : 0">
         </game-button>
       </div>
       <div class="row mt-4 align-center">
-        <game-button :playerID="player1ID" :fault="wrong" :value="values[0].wrong">
+        <game-button :playerID="values[0] ? values[0].id : 0" :fault="white" :value="values[0] ? values[0].white : 0">
         </game-button>
-        <game-button :playerID="player2ID" :fault="wrong" :value="values[1].wrong">
-        </game-button>
-      </div>
-      <div class="row mt-4 align-center">
-        <game-button :playerID="player1ID" :fault="doubleFault" :value="values[0].doublefault">
-        </game-button>
-        <game-button :playerID="player2ID" :fault="doubleFault" :value="values[1].doublefault">
+        <game-button :playerID="values[1] ? values[1].id : 0" :fault="white" :value="values[1] ? values[1].white : 0">
         </game-button>
       </div>
       <div class="row mt-4 align-center">
-        <game-button :playerID="player1ID" :fault="line4">
+        <game-button :playerID="values[0] ? values[0].id : 0" :fault="wrong" :value="values[0] ? values[0].wrong : 0">
         </game-button>
-        <game-button :playerID="player2ID" :fault="line4">
-        </game-button>
-      </div>
-      <div class="row mt-4 align-center">
-        <game-button :playerID="player1ID" :fault="black">
-        </game-button>
-        <game-button :playerID="player2ID" :fault="black">
+        <game-button :playerID="values[1] ? values[1].id : 0" :fault="wrong" :value="values[1] ? values[1].wrong : 0">
         </game-button>
       </div>
       <div class="row mt-4 align-center">
-        <game-button :playerID="player1ID" :fault="victory">
+        <game-button :playerID="values[0] ? values[0].id : 0" :fault="doubleFault" :value="values[0] ? values[0].doublefault : 0">
         </game-button>
-        <game-button :playerID="player2ID" :fault="victory">
+        <game-button :playerID="values[1] ? values[1].id : 0" :fault="doubleFault" :value="values[1] ? values[1].doublefault : 0">
+        </game-button>
+      </div>
+      <div class="row mt-4 align-center">
+        <game-button :playerID="values[0] ? values[0].id : 0" :fault="line4">
+        </game-button>
+        <game-button :playerID="values[1] ? values[1].id : 0" :fault="line4">
+        </game-button>
+      </div>
+      <div class="row mt-4 align-center">
+        <game-button :playerID="values[0] ? values[0].id : 0" :fault="black" :value="values[0] ? values[0].black : 0">
+        </game-button>
+        <game-button :playerID="values[1] ? values[1].id : 0" :fault="black" :value="values[1] ? values[1].black : 0">
+        </game-button>
+      </div>
+      <div class="row mt-4 align-center">
+        <game-button :playerID="values[0] ? values[0].id : 0" :fault="victory" :value="values[0] ? values[0].victory : 0">
+        </game-button>
+        <game-button :playerID="values[1] ? values[1].id : 0" :fault="victory" :value="values[1] ? values[1].victory : 0">
         </game-button>
       </div>
     </div>
@@ -70,11 +70,9 @@ export default {
   data () {
     return {
       gameId: 0,
-      player1ID: 0, // null because of live circle
-      player2ID: 0, // null because of live circle
-      player1Name: '',
-      player2Name: '',
-      currentPlayerID: '',
+      player1ID: 0,
+      player2ID: 0,
+      currentPlayerID: 0,
       missing: 'Missing',
       white: 'White',
       black: 'Black',
@@ -94,12 +92,10 @@ export default {
         this.gameId = data.id
         this.player1ID = data.player1.id
         this.player2ID = data.player2.id
-        this.player1Name = data.player1.userName
-        this.player2Name = data.player2.userName
 
         if (this.$store.getters.getPlayers.length === 0) {
-          this.$store.dispatch('setPlayers', data.player1.id)
-          this.$store.dispatch('setPlayers', data.player2.id)
+          this.$store.dispatch('setPlayers', [data.player1.id, data.player1.userName])
+          this.$store.dispatch('setPlayers', [data.player2.id, data.player2.userName])
         }
       })
     } catch (error) {
