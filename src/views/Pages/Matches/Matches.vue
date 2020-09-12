@@ -13,16 +13,16 @@
               class="form-control"
               id="player-1"
               @focus="showUsers = true"
-              v-model="firstUser"
+              v-model="firstUser.name"
               autocomplete="off">
-                  <div class="users-suggestions" v-show="filteredUsers.length > 0 && showUsers === true">
+                  <div class="users-suggestions" v-show="showUsers === true">
                     <ul class="users-suggestions__list">
                       <li
                       class="users-suggestions__list__user"
                       v-for="user in filteredUsers"
                       :key="user.id"
                       :value="user.id"
-                      @click.prevent="selectUser('firstUser', user.name)"
+                      @click.prevent="selectUser('firstUser', user)"
                       v-show="excludedUser !== user.name"
                       >
                         {{ user.name }}
@@ -37,7 +37,7 @@
               class="form-control"
               id="player-1"
               @focus="showSecondUsers = true"
-              v-model="secondUser"
+              v-model="secondUser.name"
               autocomplete="off">
                   <div class="users-suggestions" v-show="showSecondUsers === true">
                     <ul class="users-suggestions__list">
@@ -46,7 +46,7 @@
                       v-for="user in filteredSecondUsers"
                       :key="user.id"
                       :value="user.id"
-                      @click.prevent="selectUser('secondUser', user.name)"
+                      @click.prevent="selectUser('secondUser', user)"
                       v-show="excludedUser !== user.name"
                       >
                         {{ user.name }}
@@ -54,7 +54,9 @@
                     </ul>
                   </div>
             </div>
-            <button type="submit" class="btn btn-stabil btn-black-stabil float-right mt-2">Start</button>
+            <div class="block-button">
+              <button type="submit" class="btn btn-stabil btn-black-stabil mt-2">Start</button>
+            </div>
           </form>
         </modal-form>
         <button class="btn btn-danger btn-alert-stabil" @click="showModal = true">Start a match!</button>
@@ -95,8 +97,8 @@ export default {
     return {
       matches: [],
       users: [],
-      firstUser: '',
-      secondUser: '',
+      firstUser: { name: '' },
+      secondUser: { name: '' },
       showModal: false,
       showUsers: false,
       showSecondUsers: false,
@@ -116,16 +118,13 @@ export default {
 
       }
     },
-    excludeFirstPlayer (event) {
-      this.userDisabled = event.target.value
-    },
     hideFilteredUsers () {
       this.showUsers = false
       this.showSecondUsers = false
     },
     selectUser (userModel, user) {
       userModel === 'firstUser' ? this.firstUser = user : this.secondUser = user
-      this.excludedUser = user
+      this.excludedUser = user.name
       this.hideFilteredUsers()
     }
   },
@@ -150,12 +149,12 @@ export default {
   computed: {
     filteredUsers () {
       return this.users.filter(user => {
-        return user.name.toLowerCase().includes(this.firstUser.toLowerCase())
+        return user.name.toLowerCase().includes(this.firstUser.name.toLowerCase())
       })
     },
     filteredSecondUsers () {
       return this.users.filter(user => {
-        return user.name.toLowerCase().includes(this.secondUser.toLowerCase())
+        return user.name.toLowerCase().includes(this.secondUser.name.toLowerCase())
       })
     }
   }
@@ -167,6 +166,11 @@ export default {
 .form-label {
   margin-left: 2px;
   font-weight: 600;
+}
+
+.block-button {
+  text-align: end;
+  margin-right: 1px;
 }
 
 .users-suggestions {
