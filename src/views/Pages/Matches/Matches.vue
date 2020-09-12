@@ -22,7 +22,7 @@
                       v-for="user in filteredUsers"
                       :key="user.id"
                       :value="user.id"
-                      @click.prevent="selectUser(user.name)"
+                      @click.prevent="selectUser('firstUser', user.name)"
                       >
                         {{ user.name }}
                       </li>
@@ -31,13 +31,27 @@
             </div>
             <div class="form-group">
               <label for="player-2" class="form-label">Player 2</label>
-              <select type="text" class="form-control" id="player-2" aria-describedby="emailHelp"
-                @change="excludeFirstPlayer($event)" v-model="secondUser">
-                <option value="" disabled>Name of Player 1</option>
-                <option v-for="user in users" :key="user.id" :value="user.id" v-show="userDisabled != user.id">
-                  {{ user.name }}
-                </option>
-              </select> </div>
+              <input
+              type="text"
+              class="form-control"
+              id="player-1"
+              @focus="showSecondUsers = true"
+              v-model="secondUser"
+              autocomplete="off">
+                  <div class="users-suggestions" v-show="showSecondUsers === true">
+                    <ul class="users-suggestions__list">
+                      <li
+                      class="users-suggestions__list__user"
+                      v-for="user in filteredSecondUsers"
+                      :key="user.id"
+                      :value="user.id"
+                      @click.prevent="selectUser('secondUser', user.name)"
+                      >
+                        {{ user.name }}
+                      </li>
+                    </ul>
+                  </div>
+            </div>
             <button type="submit" class="btn btn-stabil btn-black-stabil float-right mt-2">Start</button>
           </form>
         </modal-form>
@@ -78,13 +92,12 @@ export default {
   data () {
     return {
       matches: [],
-      test: [],
       users: [],
-      userDisabled: '',
       firstUser: '',
       secondUser: '',
       showModal: false,
-      showUsers: false
+      showUsers: false,
+      showSecondUsers: false
     }
   },
   methods: {
@@ -105,9 +118,10 @@ export default {
     },
     hideFilteredUsers () {
       this.showUsers = false
+      this.showSecondUsers = false
     },
-    selectUser (user) {
-      this.firstUser = user
+    selectUser (userModel, user) {
+      userModel === 'firstUser' ? this.firstUser = user : this.secondUser = user
       this.hideFilteredUsers()
     }
   },
@@ -132,7 +146,12 @@ export default {
   computed: {
     filteredUsers () {
       return this.users.filter(user => {
-        return user.name.toLowerCase().includes(this.firstUser)
+        return user.name.toLowerCase().includes(this.firstUser.toLowerCase())
+      })
+    },
+    filteredSecondUsers () {
+      return this.users.filter(user => {
+        return user.name.toLowerCase().includes(this.secondUser.toLowerCase())
       })
     }
   }
