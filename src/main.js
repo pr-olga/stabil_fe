@@ -5,6 +5,7 @@ import router from './router'
 import store from './store'
 import 'bootstrap/dist/css/bootstrap.css'
 import ScrollAnimation from './directives/scrollanimationball'
+// import '@/plugins/echarts'
 
 Vue.directive('scrollAnimation', ScrollAnimation)
 
