@@ -42,6 +42,7 @@ export default {
 
       if (this.faultToLower === 'victory' || this.faultToLower === 'black') {
         GameService.patchGame(this.$route.params.idGame, { isFinished: true }).then((reponse) => {
+          this.$store.dispatch('destroyPlayers')
           this.$router.push(`/matches/${this.$route.params.id}/games/${this.$route.params.idGame}/finished`)
         })
       }

@@ -27,9 +27,12 @@ export default new Vuex.Store({
     PATCH_PLAYER (state, data) {
       state.players.map(pl => {
         if (pl.id === data.id) {
-          pl[data.fault] = data.value
+          pl[data.fault] += 1
         }
       })
+    },
+    DESTROY_PLAYERS (state) {
+      state.players = []
     }
   },
   actions: {
@@ -73,6 +76,9 @@ export default new Vuex.Store({
       } catch (error) {
 
       }
+    },
+    destroyPlayers ({ commit }) {
+      commit('DESTROY_PLAYERS')
     }
   },
   getters: {
