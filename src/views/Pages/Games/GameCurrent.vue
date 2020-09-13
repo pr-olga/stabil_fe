@@ -84,6 +84,11 @@ export default {
       victory: 'Victory'
     }
   },
+  beforeRouteEnter (to, from, next) {
+    GameService.getGame(to.params.idGame).then((values) => {
+      next()
+    })
+  },
   created () {
     try {
       GameService.getGame(this.$route.params.idGame).then((values) => {
