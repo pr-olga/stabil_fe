@@ -65,7 +65,7 @@ export default {
   animation-name: rolling;
   animation-duration: 3s;
   animation-timing-function: ease;
-  animation-delay: 0.4s;
+  animation-delay: 0.1s;
   animation-direction: normal;
   animation-fill-mode: forwards;
   animation-play-state: running;

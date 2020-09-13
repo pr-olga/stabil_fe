@@ -4,7 +4,7 @@
      <div class="row">
       <div class="col-md-6">
         <p class="mt-3">
-        <modal-form v-if="showModal" @close="showModal = false">
+        <modal-form v-if="showModal" @close="showModal = false" :spinning="spinning" @dying="hideLoadingIndicator()">
           <form @submit.prevent="createMatch">
             <div class="form-group">
               <label for="player-1" class="form-label">Player 1</label>
@@ -55,7 +55,7 @@
                   </div>
             </div>
             <div class="block-button">
-              <button type="submit" class="btn btn-stabil btn-black-stabil mt-2">Start</button>
+              <button type="submit" class="btn btn-stabil btn-black-stabil mt-2" @click="setLoadingIndicator()">Start</button>
             </div>
           </form>
         </modal-form>
@@ -101,7 +101,8 @@ export default {
       showModal: false,
       showUsers: false,
       showSecondUsers: false,
-      excludedUser: ''
+      excludedUser: '',
+      spinning: false
     }
   },
   methods: {
@@ -125,6 +126,14 @@ export default {
       userModel === 'firstUser' ? this.firstUser = user : this.secondUser = user
       this.excludedUser = user.name
       this.hideFilteredUsers()
+    },
+    setLoadingIndicator () {
+      setTimeout(() => {
+        this.spinning = true
+      }, 500)
+    },
+    hideLoadingIndicator () {
+      this.spinning = false
     }
   },
   created () {
