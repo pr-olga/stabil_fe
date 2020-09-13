@@ -50,13 +50,12 @@
 
 <script>
 import UserCard from '@/components/User/UserCard'
-import Form from '@/components/Modals/Form'
 import store from '@/store/index'
 
 export default {
   components: {
     'user-card': UserCard,
-    'modal-form': Form
+    'modal-form': () => import('@/components/Modals/Form')
   },
   data () {
     return {

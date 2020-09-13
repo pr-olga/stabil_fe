@@ -86,12 +86,11 @@
 
 <script>
 import MatcheService from '@/services/MatcheService'
-import Form from '@/components/Modals/Form'
 import store from '@/store/index'
 
 export default {
   components: {
-    'modal-form': Form
+    'modal-form': () => import('@/components/Modals/Form')
   },
   data () {
     return {
