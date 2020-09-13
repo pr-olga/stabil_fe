@@ -53,18 +53,19 @@ export default {
     return {
       user: [],
       games: [],
+      gameIds: [],
       victory: '',
       lost: '',
       whites: '',
       blacks: '',
       duration: [300, 500, 700, 900, 1000, 1100], // make the stuff dynamically
       charOptionsBar: {
-        backgroundColor: '#080b30',
+        backgroundColor: '#fff',
         title: {
           text: 'Progress',
           textStyle: {
             align: 'center',
-            color: '#fff',
+            color: '#eee',
             fontSize: 20
           },
           top: '5%',
@@ -108,13 +109,13 @@ export default {
           },
           splitArea: {
             // show: true,
-            color: '#f00',
+            color: '#eee',
             lineStyle: {
-              color: '#f00'
+              color: '#eee'
             }
           },
           axisLabel: {
-            color: '#fff'
+            color: '#000'
           },
           splitLine: {
             show: false
@@ -128,13 +129,13 @@ export default {
           // max: 140,
           splitNumber: 4,
           splitLine: {
-            show: true,
+            show: false,
             lineStyle: {
-              color: 'rgba(255,255,255,0.1)'
+              color: '#eee'
             }
           },
           axisLine: {
-            show: false
+            show: true
           },
           axisLabel: {
             show: false,
@@ -145,7 +146,7 @@ export default {
             }
           },
           axisTick: {
-            show: false
+            show: true
           }
         }],
         series: [{
@@ -159,7 +160,7 @@ export default {
           lineStyle: {
             normal: {
               color: '#6c50f3',
-              shadowColor: 'rgba(0, 0, 0, .3)',
+              shadowColor: '#eee',
               shadowBlur: 0,
               shadowOffsetY: 5,
               shadowOffsetX: 5
@@ -212,7 +213,7 @@ export default {
           lineStyle: {
             normal: {
               color: '#00ca95',
-              shadowColor: 'rgba(0, 0, 0, .3)',
+              shadowColor: '#eee',
               shadowBlur: 0,
               shadowOffsetY: 5,
               shadowOffsetX: 5
@@ -277,6 +278,7 @@ export default {
   },
   created () {
     UserService.getUser(this.$route.params.id).then((val) => {
+      this.gameIds = val.data.players[0].map(e => e.id)
       this.charOptionsBar.xAxis[0].data = val.data.players[0].map(e => e.id)
       this.charOptionsBar.series[0].data = (val.data.players[0].map(e => e.whites))
       this.charOptionsBar.series[1].data = (val.data.players[0].map(e => e.victory))
