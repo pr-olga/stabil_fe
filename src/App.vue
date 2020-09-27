@@ -1,9 +1,12 @@
 <template>
   <div id="app">
     <mobile-navigation v-if="showNav" :showNav=showNav @closeMenu="showNav = $event"></mobile-navigation>
-    <div class="container">
-      <div class="nav-icon" v-if="mobileView" @click="showNav = true">
-      <img src="./assets/bars-solid.svg" alt="" height="30px" ></div>
+    <div id="header--mobile" class="container" v-if="mobileView">
+      <router-link to="/">
+        <img src="./assets/logo--mob.png" alt="mobile logo" class="logo--mobile">
+      </router-link>
+      <div class="nav-icon" @click="showNav = true">
+      <img src="./assets/bars-solid.svg" alt="button to open mobile menu" height="30px" class="nav-icon--mobile"></div>
     </div>
     <stabil-header v-if="!mobileView"></stabil-header>
     <main class="container main-container-st">
@@ -41,6 +44,16 @@ export default {
 </script>
 
 <style lang="scss">
+#header--mobile {
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo--mobile {
+  height: 45px;
+  margin-top: 12px;
+}
+
 .nav-icon {
  text-align: right;
  margin-top: 20px;

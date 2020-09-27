@@ -1,7 +1,12 @@
 <template>
   <div id="navigation-mobile">
     <div class="container">
+      <div id="header--mobile">
+        <router-link to="/">
+        <img src="./../../assets/logo--mob.png" alt="mobile logo" class="logo--mobile">
+      </router-link>
       <div class="nav-icon" @click="closeMenu()"><img src="../../assets/times-solid.svg" alt="" height="30px"></div>
+      </div>
       <ul class="nav navbar">
         <list-transition :duration="duration[0]">
           <router-link to='/matches' class="nav-item" tag="li" active-class="active"><a class="nav-link"
@@ -34,7 +39,7 @@ export default {
   props: ['showNav'],
   data () {
     return {
-      duration: [600, 900, 1200, 1500], // make the stuff dynamically
+      duration: [400, 400, 400, 400], // make the stuff dynamically
       openedMobNav: false
     }
   },
@@ -67,8 +72,10 @@ export default {
     flex-direction: column;
     align-items: start;
     margin-top: 20%;
+    padding-left: 0;
 
-    a {
+    .nav-link {
+      padding-left: 0;
       color: $secondary;
       font-size: 32px;
     }
