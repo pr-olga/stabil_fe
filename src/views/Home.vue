@@ -88,9 +88,16 @@ export default {
   }
 
   &_btn {
+    float: right;
     height: 45px;
     margin-top: 10px;
     margin-left: 0.5px;
+  }
+}
+
+@media (min-width: 768px) {
+  .header_btn {
+    float: none;
   }
 }
 
@@ -103,9 +110,16 @@ export default {
 
 .border-stabil {
   position: relative;
+  margin-top: 30px;
   height: 335px;
   max-height: 100%;
   border: 3px solid $primary;
+}
+
+@media (min-width: 768px) {
+  .border-stabil {
+    margin-top: 0;
+  }
 }
 
 h1 {

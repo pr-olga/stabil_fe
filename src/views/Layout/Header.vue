@@ -1,5 +1,5 @@
 <template>
-<div id="header">
+<div id="header" class="container">
   <div class="logo">
     <a href="/"><img src="../../assets/logo.svg" alt="" width="150px"></a>
   </div>
@@ -30,7 +30,6 @@ export default {
 #header {
   display: flex;
   justify-content: space-between;
-  margin: 0 12rem 0 14rem;
   border-bottom: 1px solid #f0f0f0;
   background-color: #fff;
   position: fixed;
@@ -41,12 +40,11 @@ export default {
 }
 
 .logo {
-  padding-top: 2.5rem;
+  padding-top: 1rem;
 
 }
 
 .navbar {
-  padding: 2rem;
   justify-content: flex-end;
 }
 

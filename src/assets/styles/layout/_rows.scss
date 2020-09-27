@@ -1,9 +1,42 @@
+.main-container-st {
+  margin-top: 0;
+  margin-bottom: 150px;
+}
+
+@media (min-width: 768px) {
+  .main-container-st {
+    margin-top: 50px;
+  }
+}
+
+@media (min-width: 992px) {
+  .main-container-st {
+    margin-top: 150px;
+  }
+}
+
 .row-stabil {
   min-height: 400px;
   margin-top: 200px;
   background-color: #f5f5fa;
 
   &--hero {
-    margin-top: 260px;
+    margin-top: 0;
+  }
+}
+
+@media (min-width: 992px) {
+  .row-stabil {
+    &--hero {
+      margin-top: 200px;
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .row-stabil {
+    &--hero {
+      margin-top: 260px;
+    }
   }
 }

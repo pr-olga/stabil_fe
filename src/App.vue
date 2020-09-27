@@ -44,7 +44,6 @@ export default {
 .nav-icon {
  text-align: right;
  margin-top: 20px;
- margin-right: 20px;
 }
 
 .fade-enter-active,
@@ -57,10 +56,5 @@ export default {
 .fade-enter,
 .fade-leave-active {
   opacity: 0
-}
-
-.main-container-st {
-  margin-top: 150px;
-  margin-bottom: 150px;
 }
 </style>
