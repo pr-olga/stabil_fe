@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <div class="container">
     <mobile-navigation v-if="showNav" :showNav=showNav @closeMenu="showNav = $event"></mobile-navigation>
+    <div class="container">
       <div class="nav-icon" v-if="mobileView" @click="showNav = true">
       <img src="./assets/bars-solid.svg" alt="" height="30px" ></div>
     </div>
